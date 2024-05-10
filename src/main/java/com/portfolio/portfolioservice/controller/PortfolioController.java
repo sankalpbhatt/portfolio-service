@@ -1,6 +1,7 @@
 package com.portfolio.portfolioservice.controller;
 
-import com.portfolio.portfolioservice.model.PortfolioResponse;
+import com.portfolio.portfolioservice.model.response.PortfolioPageResponse;
+import com.portfolio.portfolioservice.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.model.request.CreatePortfolioRequest;
 import com.portfolio.portfolioservice.service.PortfolioService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +30,10 @@ public class PortfolioController {
     @PostMapping("/{id}")
     public PortfolioResponse createPortfolio(CreatePortfolioRequest request){
         return portfolioService.createPortfolio(request);
+    }
+
+    @GetMapping
+    public PortfolioPageResponse searchPortfolio(  ){
+        return null;
     }
 }

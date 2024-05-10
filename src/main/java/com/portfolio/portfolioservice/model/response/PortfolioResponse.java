@@ -1,4 +1,6 @@
-package com.portfolio.portfolioservice.model;
+package com.portfolio.portfolioservice.model.response;
+
+import com.portfolio.portfolioservice.model.PersonalInformation;
 
 public class PortfolioResponse {
 
