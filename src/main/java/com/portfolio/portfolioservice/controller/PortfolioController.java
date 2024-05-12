@@ -24,12 +24,10 @@ public class PortfolioController {
 
     @GetMapping("/{id}")
     public PortfolioResponse getPortfolioById(@PathVariable("id") String id){
-        PortfolioResponse portfolioResponse = new PortfolioResponse();
-        portfolioResponse.setId(id);
-        return portfolioResponse;
+        return new PortfolioResponse(id, null, null);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     public PortfolioResponse createPortfolio(CreatePortfolioRequest request){
         return portfolioService.createPortfolio(request);
     }

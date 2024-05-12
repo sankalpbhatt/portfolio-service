@@ -2,7 +2,7 @@
 server:
   port: 8083
   servlet:
-    context-path: /portfolio
+    context-path: /portfolio-service
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/product

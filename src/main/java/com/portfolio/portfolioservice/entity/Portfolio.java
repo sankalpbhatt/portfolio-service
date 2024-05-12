@@ -8,11 +8,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "portfolio")
-public class Portfolio {
-
-    @Id
-    private UUID id;
-    private String serialId;
-    private UUID themeId;
-
-}
+public record Portfolio(@Id
+                        UUID id,
+                        String serialId,
+                        UUID themeId
+){}

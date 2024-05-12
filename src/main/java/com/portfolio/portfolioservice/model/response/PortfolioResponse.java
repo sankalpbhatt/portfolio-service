@@ -2,17 +2,10 @@ package com.portfolio.portfolioservice.model.response;
 
 import com.portfolio.portfolioservice.model.PersonalInformation;
 
-public class PortfolioResponse {
+public record PortfolioResponse(
+        String id,
+        ThemeResponse themeResponse,
+        PersonalInformation personalInformation
 
-    private String id;
-    private ThemeResponse themeResponse;
-    private PersonalInformation personalInformation;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+) {
 }
