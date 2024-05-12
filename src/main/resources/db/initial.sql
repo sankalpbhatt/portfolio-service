@@ -1,4 +1,5 @@
-CREATE TABLE public.portfolio (
+
+CREATE TABLE portfolio.portfolio (
     id UUID PRIMARY key,
     serial_id varchar(20) not NULL ,
     description varchar(255) NOT NULL,
@@ -7,7 +8,7 @@ CREATE TABLE public.portfolio (
     bio varchar(255)
 );
 
-CREATE TABLE public.user_info (
+CREATE TABLE portfolio.user_info (
     id UUID PRIMARY key,
     serial_id varchar(20) not NULL ,
     first_name varchar(255) NOT NULL,
@@ -19,7 +20,7 @@ CREATE TABLE public.user_info (
 );
 
 
-CREATE TABLE public.address (
+CREATE TABLE portfolio.address (
     id UUID PRIMARY key,
     serial_id varchar(20) not NULL ,
     user_id UUID,
@@ -29,5 +30,5 @@ CREATE TABLE public.address (
     region varchar(100) NOT NULL,
     country varchar(255) NOT NULL,
     postal_code varchar(50) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user_info(id)
+    FOREIGN KEY (user_id) REFERENCES portfolio.user_info(id)
 );

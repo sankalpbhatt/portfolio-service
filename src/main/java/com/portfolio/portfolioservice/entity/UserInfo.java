@@ -28,6 +28,6 @@ public class UserInfo{
     private String countryCode;
     private String email;
     private String imageUrl;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL)
     private Set<Address> addresses;
 }

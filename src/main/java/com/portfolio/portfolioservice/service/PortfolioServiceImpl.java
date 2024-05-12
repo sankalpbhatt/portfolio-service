@@ -4,7 +4,9 @@ import com.portfolio.portfolioservice.mapper.PortfolioMapper;
 import com.portfolio.portfolioservice.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.model.request.CreatePortfolioRequest;
 import com.portfolio.portfolioservice.repository.PortfolioRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PortfolioServiceImpl implements PortfolioService{
 
     private final PortfolioRepository portfolioRepository;
