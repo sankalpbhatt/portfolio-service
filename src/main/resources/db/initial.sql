@@ -4,7 +4,7 @@ CREATE TABLE public.portfolio (
     description varchar(255) NOT NULL,
     theme_id UUID,
     user_info_id UUID NOT NULL,
-    bio varchar(255),
+    bio varchar(255)
 );
 
 CREATE TABLE public.user_info (
@@ -15,7 +15,7 @@ CREATE TABLE public.user_info (
     phone varchar(10) NOT NULL,
     country_code varchar(4) NOT NULL,
     email varchar(4) NOT NULL,
-    image_url varchar(255) NOT NULL,
+    image_url varchar(255) NOT NULL
 );
 
 
@@ -24,7 +24,7 @@ CREATE TABLE public.address (
     serial_id varchar(20) not NULL ,
     user_id UUID,
     address_line_1 varchar(255) NOT NULL,
-    address_line_1 varchar(255) NOT NULL,
+    address_line_2 varchar(255) NOT NULL,
     city varchar(100) NOT NULL,
     region varchar(100) NOT NULL,
     country varchar(255) NOT NULL,
