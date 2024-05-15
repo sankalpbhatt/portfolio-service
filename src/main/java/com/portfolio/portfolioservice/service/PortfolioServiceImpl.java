@@ -19,8 +19,7 @@ public class PortfolioServiceImpl implements PortfolioService{
 
     @Override
     public PortfolioResponse createPortfolio(CreatePortfolioRequest request) {
-        return portfolioMapper
-                .mapEntityToResponse(
+        return portfolioMapper.mapEntityToResponse(
                         portfolioRepository.save(portfolioMapper.mapCreateRequestToEntity(request)));
     }
 }
