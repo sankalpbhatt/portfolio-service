@@ -12,7 +12,7 @@ import java.util.UUID;
 public class PortfolioMapper {
 
     public Portfolio mapCreateRequestToEntity(CreatePortfolioRequest request){
-        return new Portfolio(null, "1", UUID.fromString(request.themeId()));
+        return new Portfolio(null, null, UUID.fromString(request.themeId()));
     }
 
     public PortfolioResponse mapEntityToResponse(Portfolio portfolio){

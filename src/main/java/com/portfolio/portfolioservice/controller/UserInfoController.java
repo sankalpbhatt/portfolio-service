@@ -20,7 +20,6 @@ public class UserInfoController {
 
     @PostMapping
     public UserInfoResponse createUserInfo(CreateUserRequest createUserRequest){
-        return userInfoService.createUser(createUserRequest);
-
+        return userInfoService.createUserInfo(createUserRequest);
     }
 }
