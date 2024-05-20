@@ -32,3 +32,12 @@ CREATE TABLE portfolio.address (
     postal_code varchar(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES portfolio.user_info(id)
 );
+
+create table portfolio.portfolio_sequence_numbers (
+   id uuid,
+   sequence_type varchar(10) not NULL ,
+   next_sequence_number bigint,
+   created_at timestamp not null default now(),
+   updated_at timestamp not null default now(),
+   primary key(id)
+)
