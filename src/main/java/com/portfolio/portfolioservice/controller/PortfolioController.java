@@ -28,7 +28,7 @@ public class PortfolioController {
     }
 
     @PostMapping
-    public PortfolioResponse createPortfolio(CreatePortfolioRequest request){
+    public PortfolioResponse createPortfolio(CreatePortfolioRequest request) throws Exception {
         return portfolioService.createPortfolio(request);
     }
 
