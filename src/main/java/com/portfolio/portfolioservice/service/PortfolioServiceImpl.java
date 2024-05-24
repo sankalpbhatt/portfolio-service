@@ -1,5 +1,6 @@
 package com.portfolio.portfolioservice.service;
 
+import com.portfolio.portfolioservice.entity.Portfolio;
 import com.portfolio.portfolioservice.mapper.PortfolioMapper;
 import com.portfolio.portfolioservice.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.model.request.CreatePortfolioRequest;
@@ -23,7 +24,8 @@ public class PortfolioServiceImpl implements PortfolioService{
 
     @Override
     public PortfolioResponse createPortfolio(CreatePortfolioRequest request) throws Exception {
-        sequenceService.getNextSequenceNumber("PORTFOLIO");
+        Portfolio portfolio = portfolioMapper.mapCreateRequestToEntity(request);
+        portfolio.setSerialId(sequenceService.getNextSequenceNumber("PORTFOLIO").toString());
         return portfolioMapper.mapEntityToResponse(
                         portfolioRepository.save(portfolioMapper.mapCreateRequestToEntity(request)));
     }
