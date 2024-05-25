@@ -16,12 +16,12 @@ CREATE TABLE portfolio.theme (
     serial_id varchar(20) not NULL ,
     name varchar(55) NOT NULL,
     description varchar(225) NOT NULL,
-    textColor varchar(10),
-    backgroundColor varchar(10),
-    primaryColor varchar(10),
-    secondaryColor varchar(10),
+    text_color numeric,
+    background_color numeric,
+    primary_color numeric,
+    secondary_color numeric,
     font varchar(20),
-    fontSize numeric,
+    font_size numeric,
     created_at timestamp not null default now(),
     updated_at timestamp not null default now(),
     deleted_at timestamp not null default now()
@@ -58,7 +58,7 @@ CREATE TABLE portfolio.address (
     FOREIGN KEY (user_id) REFERENCES portfolio.user_info(id)
 );
 
-create table portfolio.portfolio_sequence_numbers (
+create table portfolio.sequence_numbers (
    id UUID PRIMARY KEY,
    sequence_type varchar(10) not NULL ,
    next_sequence_number bigint,
@@ -66,3 +66,19 @@ create table portfolio.portfolio_sequence_numbers (
    updated_at timestamp not null default now(),
    deleted_at timestamp not null default now()
 )
+
+INSERT INTO portfolio.sequence_numbers
+(id, sequence_type, next_sequence_number, created_at, updated_at, deleted_at)
+VALUES(gen_random_uuid(), 'PORTFOLIO', 1, now(), now(), now());
+
+INSERT INTO portfolio.sequence_numbers
+(id, sequence_type, next_sequence_number, created_at, updated_at, deleted_at)
+VALUES(gen_random_uuid(), 'THEME', 1, now(), now(), now());
+
+INSERT INTO portfolio.sequence_numbers
+(id, sequence_type, next_sequence_number, created_at, updated_at, deleted_at)
+VALUES(gen_random_uuid(),'USERINFO', 1, now(), now(), now());
+
+INSERT INTO portfolio.sequence_numbers
+(id, sequence_type, next_sequence_number, created_at, updated_at, deleted_at)
+VALUES(gen_random_uuid(), 'ADDRESS', 1, now(), now(), now());

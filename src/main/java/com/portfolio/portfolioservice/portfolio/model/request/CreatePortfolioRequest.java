@@ -4,4 +4,6 @@ import com.portfolio.portfolioservice.userinfo.model.request.UserInfoRequest;
 
 public record CreatePortfolioRequest(
         String themeId,
-        UserInfoRequest userInfoRequest) { }
+        String description,
+        UserInfoRequest userInfo) {
+}

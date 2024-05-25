@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user_info")
+@Table(name = "user_info", schema = "portfolio")
 public class UserInfo extends BaseDeletableEntity {
 
     @Id

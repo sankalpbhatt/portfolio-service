@@ -18,14 +18,19 @@ public class SequenceService {
     public Long getNextSequenceNumber(SequenceType sequenceType) throws Exception {
         SequenceNumber sequenceNumber = sequenceGeneratorRepository
                 .findBySequenceType(sequenceType)
-                .orElseThrow(() -> new Exception("Not found"));
+                .orElseThrow();
         Long number = sequenceNumber.getNextSequenceNumber();
-        sequenceNumber.setNextSequenceNumber(number+1);
+        sequenceNumber.setNextSequenceNumber(number + 1);
         sequenceGeneratorRepository.save(sequenceNumber);
         return number;
     }
 
-    public enum SequenceType{
-        PORTFOLIO;
+    public enum SequenceType {
+        PORTFOLIO,
+        THEME;
+
+        public String getPrefix() {
+            return name().substring(0, 1);
+        }
     }
 }
