@@ -5,7 +5,6 @@ import com.portfolio.portfolioservice.mapper.PortfolioMapper;
 import com.portfolio.portfolioservice.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.model.request.CreatePortfolioRequest;
 import com.portfolio.portfolioservice.repository.PortfolioRepository;
-import com.portfolio.portfolioservice.util.SequenceService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,7 +24,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     @Override
     public PortfolioResponse createPortfolio(CreatePortfolioRequest request) throws Exception {
         Portfolio portfolio = portfolioMapper.mapCreateRequestToEntity(request);
-        portfolio.setSerialId(sequenceService.getNextSequenceNumber("PORTFOLIO").toString());
+        portfolio.setSerialId(sequenceService.getNextSequenceNumber(SequenceService.SequenceType.PORTFOLIO).toString());
         return portfolioMapper.mapEntityToResponse(
                         portfolioRepository.save(portfolioMapper.mapCreateRequestToEntity(request)));
     }

@@ -1,4 +1,4 @@
-package com.portfolio.portfolioservice.util;
+package com.portfolio.portfolioservice.service;
 
 import com.portfolio.portfolioservice.entity.PortfolioSequenceNumber;
 import com.portfolio.portfolioservice.repository.SequenceGeneratorRepository;
@@ -17,7 +17,7 @@ public class SequenceService {
     }
 
     @Transactional
-    public Long getNextSequenceNumber(String sequenceType) throws Exception {
+    public Long getNextSequenceNumber(SequenceType sequenceType) throws Exception {
         PortfolioSequenceNumber sequenceNumber = sequenceGeneratorRepository
                 .findBySequenceType(sequenceType)
                 .orElseThrow(() -> new Exception("Not found"));
@@ -25,5 +25,9 @@ public class SequenceService {
         sequenceNumber.setNextSequenceNumber(number+1);
         sequenceGeneratorRepository.save(sequenceNumber);
         return number;
+    }
+
+    public enum SequenceType{
+        PORTFOLIO;
     }
 }

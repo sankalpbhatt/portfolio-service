@@ -1,6 +1,9 @@
 package com.portfolio.portfolioservice.entity;
 
+import com.portfolio.portfolioservice.service.SequenceService;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -14,7 +17,8 @@ public class PortfolioSequenceNumber{
         @Id
         @GeneratedValue
         private UUID id;
-        private String sequenceType;
+        @Enumerated(EnumType.STRING)
+        private SequenceService.SequenceType sequenceType;
         private Long nextSequenceNumber;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
@@ -27,11 +31,11 @@ public class PortfolioSequenceNumber{
                 this.id = id;
         }
 
-        public String getSequenceType() {
+        public SequenceService.SequenceType getSequenceType() {
                 return sequenceType;
         }
 
-        public void setSequenceType(String sequenceType) {
+        public void setSequenceType(SequenceService.SequenceType sequenceType) {
                 this.sequenceType = sequenceType;
         }
 
