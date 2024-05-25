@@ -26,10 +26,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public UserInfoResponse getUserInfo(CreateUserRequest createUserRequest){
-        UserInfo userInfo = userInfoMapper.mapToEntity(createUserRequest);
-        userInfo = userInfoRepository.save(userInfo);
+    public UserInfoResponse getUserInfo(String id) throws Exception {
+        UserInfo userInfo = userInfoRepository.findBySerialId(id)
+                .orElseThrow(() -> new Exception("User Info not found"));
         return userInfoMapper.mapToResponse(userInfo);
     }
-
 }
