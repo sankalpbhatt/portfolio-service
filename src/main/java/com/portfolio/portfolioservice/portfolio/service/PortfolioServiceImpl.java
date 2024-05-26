@@ -4,6 +4,7 @@ import com.portfolio.portfolioservice.common.service.SequenceService;
 import com.portfolio.portfolioservice.portfolio.entity.Portfolio;
 import com.portfolio.portfolioservice.portfolio.mapper.PortfolioMapper;
 import com.portfolio.portfolioservice.portfolio.model.request.CreatePortfolioRequest;
+import com.portfolio.portfolioservice.portfolio.model.request.PortfolioFilter;
 import com.portfolio.portfolioservice.portfolio.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.portfolio.repository.PortfolioRepository;
 import com.portfolio.portfolioservice.theme.entity.Theme;
@@ -47,5 +48,10 @@ public class PortfolioServiceImpl implements PortfolioService {
                 sequenceService.getNextSequenceNumber(SequenceService.SequenceType.PORTFOLIO));
         return portfolioMapper.mapEntityToResponse(
                 portfolioRepository.save(portfolio));
+    }
+
+    @Override
+    public PortfolioResponse searchPortfolio(PortfolioFilter filter) {
+        return null;
     }
 }
