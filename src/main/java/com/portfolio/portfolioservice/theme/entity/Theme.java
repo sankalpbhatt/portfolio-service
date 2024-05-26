@@ -19,10 +19,10 @@ public class Theme extends BaseDeletableEntity {
     private String serialId;
     private String name;
     private String description;
-    private Integer textColor;
-    private Integer backgroundColor;
-    private Integer primaryColor;
-    private Integer secondaryColor;
+    private String textColor;
+    private String backgroundColor;
+    private String primaryColor;
+    private String secondaryColor;
     private String font;
     private Integer fontSize;
 
@@ -58,35 +58,35 @@ public class Theme extends BaseDeletableEntity {
         this.description = description;
     }
 
-    public Integer getTextColor() {
+    public String getTextColor() {
         return textColor;
     }
 
-    public void setTextColor(Integer textColor) {
+    public void setTextColor(String textColor) {
         this.textColor = textColor;
     }
 
-    public Integer getBackgroundColor() {
+    public String getBackgroundColor() {
         return backgroundColor;
     }
 
-    public void setBackgroundColor(Integer backgroundColor) {
+    public void setBackgroundColor(String backgroundColor) {
         this.backgroundColor = backgroundColor;
     }
 
-    public Integer getPrimaryColor() {
+    public String getPrimaryColor() {
         return primaryColor;
     }
 
-    public void setPrimaryColor(Integer primaryColor) {
+    public void setPrimaryColor(String primaryColor) {
         this.primaryColor = primaryColor;
     }
 
-    public Integer getSecondaryColor() {
+    public String getSecondaryColor() {
         return secondaryColor;
     }
 
-    public void setSecondaryColor(Integer secondaryColor) {
+    public void setSecondaryColor(String secondaryColor) {
         this.secondaryColor = secondaryColor;
     }
 

@@ -15,7 +15,7 @@ public class UserInfoMapper {
         this.addressMapper = addressMapper;
     }
 
-    public UserInfoResponse mapToResponse(UserInfo userInfo){
+    public UserInfoResponse mapToResponse(UserInfo userInfo) {
         UserInfoResponse userInfoResponse = new UserInfoResponse();
         userInfoResponse.setId(userInfo.getSerialId());
         userInfoResponse.setFirstName(userInfo.getFirstName());
@@ -27,15 +27,14 @@ public class UserInfoMapper {
         return null;
     }
 
-    public UserInfo mapToEntity(CreateUserRequest createUserRequest){
-
+    public UserInfo mapToEntity(CreateUserRequest createUserRequest) {
         UserInfo userInfo = new UserInfo();
-        userInfo.setFirstName(createUserRequest.getFirstName());
-        userInfo.setLastName(createUserRequest.getFirstName());
-        userInfo.setPhone(createUserRequest.getCountryCode()+createUserRequest.getPhone());
-        userInfo.setEmail(createUserRequest.getEmail());
-        userInfo.setImageUrl(createUserRequest.getImageUrl());
-        userInfo.setAddresses(addressMapper.mapToEntity(createUserRequest.getAddresses()));
+        userInfo.setFirstName(createUserRequest.firstName());
+        userInfo.setLastName(createUserRequest.lastName());
+        userInfo.setPhone(createUserRequest.countryCode() + createUserRequest.phone());
+        userInfo.setEmail(createUserRequest.email());
+        userInfo.setImageUrl(createUserRequest.imageUrl());
+        userInfo.setAddresses(addressMapper.mapToEntity(createUserRequest.addresses()));
         return userInfo;
     }
 }

@@ -16,7 +16,9 @@ public class Portfolio extends BaseDeletableEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String description;
+    private String bio;
     private String serialId;
+    private UUID userInfoId;
     private UUID themeId;
 
     public UUID getId() {
@@ -41,6 +43,22 @@ public class Portfolio extends BaseDeletableEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public UUID getUserInfoId() {
+        return userInfoId;
+    }
+
+    public void setUserInfoId(UUID userInfoId) {
+        this.userInfoId = userInfoId;
     }
 
     public UUID getThemeId() {

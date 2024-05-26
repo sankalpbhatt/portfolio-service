@@ -4,7 +4,9 @@ import com.portfolio.portfolioservice.portfolio.model.request.CreatePortfolioReq
 import com.portfolio.portfolioservice.portfolio.model.response.PortfolioPageResponse;
 import com.portfolio.portfolioservice.portfolio.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.portfolio.service.PortfolioService;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Validated
 @RequestMapping("/portfolio")
 public class PortfolioController {
 
@@ -26,7 +29,7 @@ public class PortfolioController {
     }
 
     @GetMapping("/{id}")
-    public PortfolioResponse getPortfolioById(@PathVariable("id") String id) {
+    public PortfolioResponse getPortfolioById(@PathVariable("id") @NotNull String id) {
         return new PortfolioResponse(id, null, null);
     }
 

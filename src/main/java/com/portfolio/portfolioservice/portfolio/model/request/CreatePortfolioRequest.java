@@ -1,9 +1,12 @@
 package com.portfolio.portfolioservice.portfolio.model.request;
 
-import com.portfolio.portfolioservice.userinfo.model.request.UserInfoRequest;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 
+@Schema
 public record CreatePortfolioRequest(
-        String themeId,
+        @NotNull @Schema(example = "T001") String themeId,
         String description,
-        UserInfoRequest userInfo) {
+        @NotNull @Schema(example = "U001") String userInfoId,
+        String bio) {
 }

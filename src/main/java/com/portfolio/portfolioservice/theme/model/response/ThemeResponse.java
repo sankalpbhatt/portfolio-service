@@ -1,17 +1,19 @@
 package com.portfolio.portfolioservice.theme.model.response;
 
 
-import java.awt.Color;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema
 public class ThemeResponse {
 
+    @Schema(example = "T001")
     private String id;
     private String name;
     private String description;
-    private Color textColor;
-    private Color backgroundColor;
-    private Color primaryColor;
-    private Color secondaryColor;
+    private String textColor;
+    private String backgroundColor;
+    private String primaryColor;
+    private String secondaryColor;
     private String font;
     private Integer fontSize;
 
@@ -39,35 +41,35 @@ public class ThemeResponse {
         this.description = description;
     }
 
-    public Color getTextColor() {
+    public String getTextColor() {
         return textColor;
     }
 
-    public void setTextColor(Color textColor) {
+    public void setTextColor(String textColor) {
         this.textColor = textColor;
     }
 
-    public Color getBackgroundColor() {
+    public String getBackgroundColor() {
         return backgroundColor;
     }
 
-    public void setBackgroundColor(Color backgroundColor) {
+    public void setBackgroundColor(String backgroundColor) {
         this.backgroundColor = backgroundColor;
     }
 
-    public Color getPrimaryColor() {
+    public String getPrimaryColor() {
         return primaryColor;
     }
 
-    public void setPrimaryColor(Color primaryColor) {
+    public void setPrimaryColor(String primaryColor) {
         this.primaryColor = primaryColor;
     }
 
-    public Color getSecondaryColor() {
+    public String getSecondaryColor() {
         return secondaryColor;
     }
 
-    public void setSecondaryColor(Color secondaryColor) {
+    public void setSecondaryColor(String secondaryColor) {
         this.secondaryColor = secondaryColor;
     }
 

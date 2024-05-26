@@ -27,6 +27,7 @@ public class SequenceService {
 
     public enum SequenceType {
         PORTFOLIO,
+        USERINFO,
         THEME;
 
         public String getPrefix() {

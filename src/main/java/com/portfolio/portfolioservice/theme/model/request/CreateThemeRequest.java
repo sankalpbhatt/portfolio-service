@@ -1,25 +1,23 @@
 package com.portfolio.portfolioservice.theme.model.request;
 
-import java.awt.*;
-
 public class CreateThemeRequest {
 
     private final String name;
     private final String description;
-    private final Color textColor;
-    private final Color backgroundColor;
-    private final Color primaryColor;
-    private final Color secondaryColor;
+    private final String textColor;
+    private final String backgroundColor;
+    private final String primaryColor;
+    private final String secondaryColor;
     private final String font;
     private final Integer fontSize;
 
     public CreateThemeRequest(
             String name,
             String description,
-            Color textColor,
-            Color backgroundColor,
-            Color primaryColor,
-            Color secondaryColor,
+            String textColor,
+            String backgroundColor,
+            String primaryColor,
+            String secondaryColor,
             String font,
             Integer fontSize) {
         this.name = name;
@@ -40,19 +38,19 @@ public class CreateThemeRequest {
         return description;
     }
 
-    public Color getTextColor() {
+    public String getTextColor() {
         return textColor;
     }
 
-    public Color getBackgroundColor() {
+    public String getBackgroundColor() {
         return backgroundColor;
     }
 
-    public Color getPrimaryColor() {
+    public String getPrimaryColor() {
         return primaryColor;
     }
 
-    public Color getSecondaryColor() {
+    public String getSecondaryColor() {
         return secondaryColor;
     }
 

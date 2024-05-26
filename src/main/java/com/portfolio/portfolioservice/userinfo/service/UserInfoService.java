@@ -5,7 +5,7 @@ import com.portfolio.portfolioservice.userinfo.model.response.UserInfoResponse;
 
 public interface UserInfoService {
 
-    UserInfoResponse createUserInfo(CreateUserRequest createUserRequest);
+    UserInfoResponse createUserInfo(CreateUserRequest createUserRequest) throws Exception;
 
     UserInfoResponse getUserInfo(String id) throws Exception;
 }
