@@ -20,4 +20,44 @@ public class Industry extends BaseDeletableEntity {
     private String industryName;
     private UUID parentIndustryId;
     private String imageUrl;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getSerialId() {
+        return serialId;
+    }
+
+    public void setSerialId(String serialId) {
+        this.serialId = serialId;
+    }
+
+    public String getIndustryName() {
+        return industryName;
+    }
+
+    public void setIndustryName(String industryName) {
+        this.industryName = industryName;
+    }
+
+    public UUID getParentIndustryId() {
+        return parentIndustryId;
+    }
+
+    public void setParentIndustryId(UUID parentIndustryId) {
+        this.parentIndustryId = parentIndustryId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

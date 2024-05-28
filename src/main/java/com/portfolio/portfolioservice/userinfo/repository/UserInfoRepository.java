@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface UserInfoRepository extends JpaRepository<UserInfo, UUID> {
 
-    public Optional<UserInfo> findBySerialId(String serialId);
+    Optional<UserInfo> findBySerialId(String serialId);
 }
