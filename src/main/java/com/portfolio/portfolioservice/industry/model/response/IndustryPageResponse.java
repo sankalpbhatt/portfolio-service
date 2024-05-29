@@ -1,7 +1,6 @@
-package com.portfolio.portfolioservice.industry.service;
+package com.portfolio.portfolioservice.industry.model.response;
 
 import com.portfolio.portfolioservice.common.model.response.PageResponse;
-import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 
 public class IndustryPageResponse extends PageResponse<IndustryResponse> {
 }

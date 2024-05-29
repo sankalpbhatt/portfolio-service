@@ -34,7 +34,7 @@ public class PortfolioController {
     @GetMapping("/{id}")
     @Operation(summary = "Get Portfolio by ID")
     public PortfolioResponse getPortfolioById(@PathVariable("id") @NotNull String id) {
-        return new PortfolioResponse(id, null, null);
+        return portfolioService.getPortfolioById(id);
     }
 
     @PostMapping

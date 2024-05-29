@@ -1,4 +1,4 @@
-package com.portfolio.portfolioservice.industry.entity;
+package com.portfolio.portfolioservice.role.entity;
 
 import com.portfolio.portfolioservice.common.entity.BaseDeletableEntity;
 import jakarta.persistence.Entity;
@@ -10,15 +10,15 @@ import jakarta.persistence.Table;
 import java.util.UUID;
 
 @Entity
-@Table(name = "industry", schema = "portfolio")
-public class Industry extends BaseDeletableEntity {
+@Table(name = "role", schema = "portfolio")
+public class Role extends BaseDeletableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String serialId;
-    private String industryName;
-    private UUID parentIndustryId;
+    private String name;
+    private UUID industryId;
     private String imageUrl;
 
     public UUID getId() {
@@ -33,20 +33,20 @@ public class Industry extends BaseDeletableEntity {
         this.serialId = serialId;
     }
 
-    public String getIndustryName() {
-        return industryName;
+    public String getName() {
+        return name;
     }
 
-    public void setIndustryName(String industryName) {
-        this.industryName = industryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public UUID getParentIndustryId() {
-        return parentIndustryId;
+    public UUID getIndustryId() {
+        return industryId;
     }
 
-    public void setParentIndustryId(UUID parentIndustryId) {
-        this.parentIndustryId = parentIndustryId;
+    public void setIndustryId(UUID industryId) {
+        this.industryId = industryId;
     }
 
     public String getImageUrl() {

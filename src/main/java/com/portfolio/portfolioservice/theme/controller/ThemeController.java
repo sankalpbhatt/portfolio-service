@@ -22,14 +22,14 @@ public class ThemeController {
         this.themeService = themeService;
     }
 
-    @GetMapping("/{id}")
-    public ThemeResponse getTheme(@PathVariable(name = "id") String id) {
-        return themeService.getTheme(id);
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ThemeResponse createTheme(@RequestBody CreateThemeRequest request) throws Exception {
         return themeService.createTheme(request);
+    }
+
+    @GetMapping("/{id}")
+    public ThemeResponse getThemeById(@PathVariable(name = "id") String id) {
+        return themeService.getThemeById(id);
     }
 }

@@ -27,14 +27,12 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public UserInfoResponse createUserInfo(CreateUserRequest createUserRequest) throws Exception {
         UserInfo userInfo = userInfoMapper.mapToEntity(createUserRequest);
-        userInfo.setSerialId(SequenceService.SequenceType.USERINFO.getPrefix() +
-                sequenceService.getNextSequenceNumber(SequenceService.SequenceType.USERINFO));
         userInfo = userInfoRepository.save(userInfo);
         return userInfoMapper.mapToResponse(userInfo);
     }
 
     @Override
-    public UserInfoResponse getUserInfo(String id) throws Exception {
+    public UserInfoResponse getUserInfoById(String id) throws Exception {
         UserInfo userInfo = userInfoRepository.findBySerialId(id).orElseThrow(() -> new Exception());
         return userInfoMapper.mapToResponse(userInfo);
     }

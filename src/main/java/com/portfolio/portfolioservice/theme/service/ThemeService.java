@@ -5,7 +5,7 @@ import com.portfolio.portfolioservice.theme.model.response.ThemeResponse;
 
 public interface ThemeService {
 
-    ThemeResponse getTheme(String id);
+    ThemeResponse getThemeById(String id);
 
     ThemeResponse createTheme(CreateThemeRequest request) throws Exception;
 }

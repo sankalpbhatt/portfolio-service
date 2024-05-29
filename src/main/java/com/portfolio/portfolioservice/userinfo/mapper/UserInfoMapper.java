@@ -1,6 +1,7 @@
 package com.portfolio.portfolioservice.userinfo.mapper;
 
 import com.portfolio.portfolioservice.address.mapper.AddressMapper;
+import com.portfolio.portfolioservice.common.service.SequenceService;
 import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
 import com.portfolio.portfolioservice.userinfo.model.request.CreateUserRequest;
 import com.portfolio.portfolioservice.userinfo.model.response.UserInfoResponse;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Component;
 public class UserInfoMapper {
 
     private final AddressMapper addressMapper;
+    private final SequenceService sequenceService;
 
-    public UserInfoMapper(AddressMapper addressMapper) {
+    public UserInfoMapper(AddressMapper addressMapper, SequenceService sequenceService) {
         this.addressMapper = addressMapper;
+        this.sequenceService = sequenceService;
     }
 
     public UserInfoResponse mapToResponse(UserInfo userInfo) {
@@ -27,8 +30,10 @@ public class UserInfoMapper {
         return null;
     }
 
-    public UserInfo mapToEntity(CreateUserRequest createUserRequest) {
+    public UserInfo mapToEntity(CreateUserRequest createUserRequest) throws Exception {
         UserInfo userInfo = new UserInfo();
+        userInfo.setSerialId(SequenceService.SequenceType.USERINFO.getPrefix() +
+                sequenceService.getNextSequenceNumber(SequenceService.SequenceType.USERINFO));
         userInfo.setFirstName(createUserRequest.firstName());
         userInfo.setLastName(createUserRequest.lastName());
         userInfo.setPhone(createUserRequest.countryCode() + createUserRequest.phone());

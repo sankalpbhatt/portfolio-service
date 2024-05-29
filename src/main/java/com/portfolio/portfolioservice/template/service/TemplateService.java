@@ -7,5 +7,5 @@ public interface TemplateService {
 
     TemplateResponse createTemplate(CreateTemplateRequest request) throws Exception;
 
-    TemplateResponse getTemplate(String id);
+    TemplateResponse getTemplateById(String id);
 }

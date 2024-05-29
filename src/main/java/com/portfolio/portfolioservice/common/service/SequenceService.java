@@ -28,6 +28,7 @@ public class SequenceService {
     public enum SequenceType {
         PORTFOLIO,
         USERINFO,
+        ADDRESS,
         THEME,
         TEMPLATE;
 

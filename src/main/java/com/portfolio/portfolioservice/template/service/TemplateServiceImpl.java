@@ -34,7 +34,7 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public TemplateResponse getTemplate(String id) {
+    public TemplateResponse getTemplateById(String id) {
         Template template = templateRepository.findBySerialId(id).orElseThrow();
         return templateMapper.mapToResponse(template);
     }

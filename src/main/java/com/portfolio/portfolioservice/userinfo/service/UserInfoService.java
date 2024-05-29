@@ -7,5 +7,5 @@ public interface UserInfoService {
 
     UserInfoResponse createUserInfo(CreateUserRequest createUserRequest) throws Exception;
 
-    UserInfoResponse getUserInfo(String id) throws Exception;
+    UserInfoResponse getUserInfoById(String id) throws Exception;
 }

@@ -2,8 +2,8 @@ package com.portfolio.portfolioservice.industry.controller;
 
 import com.portfolio.portfolioservice.industry.model.request.CreateIndustryRequest;
 import com.portfolio.portfolioservice.industry.model.request.IndustryFilter;
+import com.portfolio.portfolioservice.industry.model.response.IndustryPageResponse;
 import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
-import com.portfolio.portfolioservice.industry.service.IndustryPageResponse;
 import com.portfolio.portfolioservice.industry.service.IndustryService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -38,8 +38,8 @@ public class IndustryController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get Industry by ID")
-    public IndustryResponse getIndustry(@PathVariable(name = "id") String id) {
-        return industryService.getIndustry(id);
+    public IndustryResponse getIndustryById(@PathVariable(name = "id") String id) {
+        return industryService.getIndustryById(id);
     }
 
     @GetMapping

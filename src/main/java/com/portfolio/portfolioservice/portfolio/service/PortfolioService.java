@@ -9,4 +9,6 @@ public interface PortfolioService {
     PortfolioResponse createPortfolio(CreatePortfolioRequest request) throws Exception;
 
     PortfolioResponse searchPortfolio(PortfolioFilter filter);
+
+    PortfolioResponse getPortfolioById(String id);
 }

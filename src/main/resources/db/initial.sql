@@ -45,8 +45,8 @@ CREATE TABLE portfolio.address (
     id UUID PRIMARY KEY,
     serial_id VARCHAR(20) NOT NULL ,
     user_id UUID,
-    address_line_1 VARCHAR(255) NOT NULL,
-    address_line_2 VARCHAR(255) NOT NULL,
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255) NOT NULL,
     city VARCHAR(100) NOT NULL,
     region VARCHAR(100) NOT NULL,
     country VARCHAR(255) NOT NULL,
@@ -93,33 +93,33 @@ CREATE TABLE portfolio.industries (
     industry_name VARCHAR(100) NOT NULL,
     parent_industry_id UUID DEFAULT NULL,
     image_url VARCHAR(255),
-    created_at TIMESTAMP NOT NULL DEFAULT now(),
-    updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
-    FOREIGN KEY (parent_industry_id) REFERENCES industries(industry_id)
+    created_at TIMESTAMP not null DEFAULT NOW(),
+    updated_at TIMESTAMP not null DEFAULT NOW(),
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (parent_industry_id) REFERENCES portfolio.industries(id)
 );
 
 CREATE TABLE portfolio.roles (
     serial_id varchar(20) NOT NULL ,
     id UUID PRIMARY KEY,
-    role_name VARCHAR(100) NOT NULL,
-    industry_id UUID,
+    name VARCHAR(100) NOT NULL,
     image_url VARCHAR(255),
-    created_at TIMESTAMP NOT NULL DEFAULT now(),
-    updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
-    FOREIGN KEY (industry_id) REFERENCES industries(industry_id)
+    industry_id UUID,
+    created_at TIMESTAMP not null DEFAULT NOW(),
+    updated_at TIMESTAMP not null DEFAULT NOW(),
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (industry_id) REFERENCES portfolio.industries(id)
 );
 
 CREATE TABLE portfolio.portfolio_templates (
     serial_id varchar(20) NOT NULL ,
     id UUID PRIMARY KEY,
-    role_id UUID,
-    template_name VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     template_description TEXT,
+    role_id UUID,
     image_url VARCHAR(255),
-    created_at TIMESTAMP NOT NULL DEFAULT now(),
-    updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
-    FOREIGN KEY (role_id) REFERENCES roles(role_id)
+    created_at TIMESTAMP not null DEFAULT NOW(),
+    updated_at TIMESTAMP not null DEFAULT NOW(),
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (role_id) REFERENCES portfolio.roles(id)
 );

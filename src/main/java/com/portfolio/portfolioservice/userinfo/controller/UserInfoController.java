@@ -38,7 +38,7 @@ public class UserInfoController {
     @GetMapping("/{id}")
     @Operation(summary = "Get User Info by ID")
     @ApiResponse(description = "API to get UserInfo by ID")
-    public UserInfoResponse getUserInfo(@PathVariable(name = "id") String id) throws Exception {
-        return userInfoService.getUserInfo(id);
+    public UserInfoResponse getUserInfoById(@PathVariable(name = "id") String id) throws Exception {
+        return userInfoService.getUserInfoById(id);
     }
 }

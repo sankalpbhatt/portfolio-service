@@ -25,7 +25,7 @@ public class ThemeServiceImpl implements ThemeService {
     }
 
     @Override
-    public ThemeResponse getTheme(String id) {
+    public ThemeResponse getThemeById(String id) {
         Theme theme = themeRepository.findBySerialId(id).orElseThrow();
         return themeMapper.mapToResponse(theme);
     }

@@ -3,9 +3,9 @@ package com.portfolio.portfolioservice.address.mapper;
 import com.portfolio.portfolioservice.address.entity.Address;
 import com.portfolio.portfolioservice.address.model.request.AddressRequest;
 import com.portfolio.portfolioservice.address.model.response.AddressResponse;
+import com.portfolio.portfolioservice.common.service.SequenceService;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,7 +13,14 @@ import java.util.stream.Collectors;
 @Component
 public class AddressMapper {
 
-    public Address mapToEntity(AddressRequest addressRequest){
+
+    private final SequenceService sequenceService;
+
+    public AddressMapper(SequenceService sequenceService) {
+        this.sequenceService = sequenceService;
+    }
+
+    public Address mapToEntity(AddressRequest addressRequest) throws Exception {
         Address address = new Address();
         address.setAddressLine1(addressRequest.getAddressLine1());
         address.setAddressLine2(addressRequest.getAddressLine2());
@@ -21,12 +28,19 @@ public class AddressMapper {
         address.setRegion(addressRequest.getRegion());
         address.setCountry(addressRequest.getCountry());
         address.setPostalCode(addressRequest.getPostalCode());
+        address.setSerialId(SequenceService.SequenceType.ADDRESS.getPrefix() +
+                sequenceService.getNextSequenceNumber(SequenceService.SequenceType.ADDRESS));
         return address;
     }
 
-    public Set<Address> mapToEntity(List<AddressRequest> addressRequests){
-        Set<Address> addresses = new HashSet<>();
-        addressRequests.stream().map(address -> this.mapToEntity(address)).collect(Collectors.toSet());
+    public Set<Address> mapToEntity(List<AddressRequest> addressRequests) throws Exception {
+        Set<Address> addresses = addressRequests.stream().map(address -> {
+            try {
+                return this.mapToEntity(address);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }).collect(Collectors.toSet());
         return addresses;
     }
 

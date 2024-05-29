@@ -30,14 +30,14 @@ public class TemplateController {
     @Operation(summary = "Create Template")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiResponse(description = "API to create Template")
-    public TemplateResponse createTemplate(@Validated @RequestBody CreateTemplateRequest request) {
+    public TemplateResponse createTemplate(@Validated @RequestBody CreateTemplateRequest request) throws Exception {
         return templateService.createTemplate(request);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get Template by ID")
     @ApiResponse(description = "API to get Template")
-    public TemplateResponse getTemplate(@PathVariable(name = "id") String id) {
-        return templateService.getTemplate(id);
+    public TemplateResponse getTemplateById(@PathVariable(name = "id") String id) {
+        return templateService.getTemplateById(id);
     }
 }

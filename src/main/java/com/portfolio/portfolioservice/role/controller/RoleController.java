@@ -1,0 +1,40 @@
+package com.portfolio.portfolioservice.role.controller;
+
+import com.portfolio.portfolioservice.role.model.request.CreateRoleRequest;
+import com.portfolio.portfolioservice.role.model.response.RoleResponse;
+import com.portfolio.portfolioservice.role.service.RoleService;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/role")
+@Validated
+public class RoleController {
+
+    private final RoleService roleService;
+
+
+    public RoleController(RoleService roleService) {
+        this.roleService = roleService;
+    }
+
+    @PostMapping
+    @Operation(summary = "Create Role")
+    @ResponseStatus(HttpStatus.CREATED)
+    public RoleResponse createRole(CreateRoleRequest request) {
+        return roleService.createRole(request);
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get Role by ID")
+    public RoleResponse getRole(@PathVariable("id") String id) {
+        return roleService.getRoleById(id);
+    }
+}

@@ -4,10 +4,13 @@ import com.portfolio.portfolioservice.industry.entity.Industry;
 import com.portfolio.portfolioservice.industry.mapper.IndustryMapper;
 import com.portfolio.portfolioservice.industry.model.request.CreateIndustryRequest;
 import com.portfolio.portfolioservice.industry.model.request.IndustryFilter;
+import com.portfolio.portfolioservice.industry.model.response.IndustryPageResponse;
 import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 import com.portfolio.portfolioservice.industry.repository.IndustryRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class IndustryServiceImpl implements IndustryService {
 
     private final IndustryRepository industryRepository;
@@ -27,7 +30,7 @@ public class IndustryServiceImpl implements IndustryService {
     }
 
     @Override
-    public IndustryResponse getIndustry(String id) {
+    public IndustryResponse getIndustryById(String id) {
         Industry industry = industryRepository.findBySerialId(id).orElseThrow();
         return industryMapper.mapToResponse(industry);
     }

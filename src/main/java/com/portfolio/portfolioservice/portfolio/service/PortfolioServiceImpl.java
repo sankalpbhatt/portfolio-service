@@ -54,4 +54,9 @@ public class PortfolioServiceImpl implements PortfolioService {
     public PortfolioResponse searchPortfolio(PortfolioFilter filter) {
         return null;
     }
+
+    @Override
+    public PortfolioResponse getPortfolioById(String id) {
+        return null;
+    }
 }

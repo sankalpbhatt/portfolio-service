@@ -2,11 +2,11 @@ package com.portfolio.portfolioservice.common.entity;
 
 import java.time.LocalDateTime;
 
-public class BaseDeletableEntity{
+public class BaseDeletableEntity {
 
-    private LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime updatedAt = LocalDateTime.now();
-    private LocalDateTime deletedAt = LocalDateTime.now();
+    protected LocalDateTime createdAt = LocalDateTime.now();
+    protected LocalDateTime updatedAt = LocalDateTime.now();
+    protected LocalDateTime deletedAt = LocalDateTime.now();
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

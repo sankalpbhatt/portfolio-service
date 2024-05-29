@@ -26,7 +26,8 @@ public class UserInfo extends BaseDeletableEntity {
     private String phone;
     private String email;
     private String imageUrl;
-    @OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Address> addresses;
 
     public UUID getId() {
@@ -73,19 +74,19 @@ public class UserInfo extends BaseDeletableEntity {
         this.email = email;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public Set<Address> getAddresses() {
         return addresses;
     }
 
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
