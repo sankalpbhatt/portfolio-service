@@ -4,9 +4,9 @@ server:
     context-path: /portfolio-service
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/product
-    username: product
-    password: product
+    url: jdbc:postgresql://localhost:5432/portfolio
+    username: portfolio
+    password: portfolio
   jpa:
     hibernate:
       ddl-auto: none
