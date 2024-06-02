@@ -1,15 +1,16 @@
-version: "3.9"
+version: '3.8'
+
 services:
   db:
-    image: postgres:14.2-alpine3.15
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio@123 # replace with a strong password
     ports:
       - "5432:5432"
     volumes:
-      - "porfolio_data:/var/lib/postgresql/data"
-    restart: on-failure
-    env_file:
-      - '.env.local'
+      - db_data:/var/lib/postgresql/data
+
 volumes:
-  porfolio_data:
-
-
+  db_data:
