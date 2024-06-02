@@ -2,24 +2,32 @@ server:
   port: 8083
   servlet:
     context-path: /portfolio-service
+
 spring:
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
   datasource:
     url: jdbc:postgresql://localhost:5432/portfolio
     username: portfolio
     password: portfolio@123
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+flyway:
+  locations: classpath:db/migration
+  schema: portfolio
 
 logging:
   level:
     org:
       hibernate:
-        SQL: DEBUG #
+        SQL: WARN # Set this to DEBUG to print query in logs
         type:
           descriptor:
             sql:
-              BasicBinder: TRACE #
+              BasicBinder: TRACE
