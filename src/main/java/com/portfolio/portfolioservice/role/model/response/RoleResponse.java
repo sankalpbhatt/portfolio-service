@@ -1,12 +1,12 @@
 package com.portfolio.portfolioservice.role.model.response;
 
-import java.util.UUID;
+import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 
 public class RoleResponse {
 
     private String id;
     private String name;
-    private UUID industryId;
+    private IndustryResponse industry;
     private String imageUrl;
 
     public String getId() {
@@ -25,12 +25,12 @@ public class RoleResponse {
         this.name = name;
     }
 
-    public UUID getIndustryId() {
-        return industryId;
+    public IndustryResponse getIndustry() {
+        return industry;
     }
 
-    public void setIndustryId(UUID industryId) {
-        this.industryId = industryId;
+    public void setIndustry(IndustryResponse industry) {
+        this.industry = industry;
     }
 
     public String getImageUrl() {

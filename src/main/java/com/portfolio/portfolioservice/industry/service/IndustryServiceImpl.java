@@ -10,6 +10,8 @@ import com.portfolio.portfolioservice.industry.repository.IndustryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @Service
 public class IndustryServiceImpl implements IndustryService {
 
@@ -23,15 +25,21 @@ public class IndustryServiceImpl implements IndustryService {
 
     @Override
     @Transactional
-    public IndustryResponse createIndustry(CreateIndustryRequest request) {
+    public IndustryResponse createIndustry(CreateIndustryRequest request) throws Exception {
         Industry industry = industryMapper.mapToEntity(request);
         industry = industryRepository.save(industry);
         return industryMapper.mapToResponse(industry);
     }
 
     @Override
-    public IndustryResponse getIndustryById(String id) {
+    public IndustryResponse getIndustryBySerialId(String id) {
         Industry industry = industryRepository.findBySerialId(id).orElseThrow();
+        return industryMapper.mapToResponse(industry);
+    }
+
+    @Override
+    public IndustryResponse getIndustryById(UUID id) {
+        Industry industry = industryRepository.findById(id).orElseThrow();
         return industryMapper.mapToResponse(industry);
     }
 

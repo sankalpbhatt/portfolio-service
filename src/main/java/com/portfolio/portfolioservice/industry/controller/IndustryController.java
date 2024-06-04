@@ -32,14 +32,14 @@ public class IndustryController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create new Industry")
-    public IndustryResponse createIndustry(@RequestBody @Valid CreateIndustryRequest request) {
+    public IndustryResponse createIndustry(@RequestBody @Valid CreateIndustryRequest request) throws Exception {
         return industryService.createIndustry(request);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get Industry by ID")
     public IndustryResponse getIndustryById(@PathVariable(name = "id") String id) {
-        return industryService.getIndustryById(id);
+        return industryService.getIndustryBySerialId(id);
     }
 
     @GetMapping

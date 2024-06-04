@@ -59,7 +59,7 @@ CREATE TABLE portfolio.address (
 
 create table portfolio.sequence_numbers (
    id UUID PRIMARY KEY,
-   sequence_type VARCHAR(10) NOT NULL ,
+   sequence_type VARCHAR(20) NOT NULL ,
    next_sequence_number bigint,
    created_at TIMESTAMP NOT NULL DEFAULT now(),
    updated_at TIMESTAMP NOT NULL DEFAULT now(),

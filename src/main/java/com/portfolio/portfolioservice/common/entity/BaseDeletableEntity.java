@@ -1,7 +1,10 @@
 package com.portfolio.portfolioservice.common.entity;
 
+import jakarta.persistence.MappedSuperclass;
+
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 public class BaseDeletableEntity {
 
     protected LocalDateTime createdAt = LocalDateTime.now();

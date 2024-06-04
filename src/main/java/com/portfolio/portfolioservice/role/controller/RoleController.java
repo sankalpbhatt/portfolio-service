@@ -28,7 +28,7 @@ public class RoleController {
     @PostMapping
     @Operation(summary = "Create Role")
     @ResponseStatus(HttpStatus.CREATED)
-    public RoleResponse createRole(CreateRoleRequest request) {
+    public RoleResponse createRole(CreateRoleRequest request) throws Exception {
         return roleService.createRole(request);
     }
 

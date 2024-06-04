@@ -30,7 +30,11 @@ public class SequenceService {
         USERINFO,
         ADDRESS,
         THEME,
-        TEMPLATE;
+        TEMPLATE,
+        ROLE,
+        INDUSTRY,
+        PARENT_INDUSTRY;
+
 
         public String getPrefix() {
             return name().substring(0, 1);
