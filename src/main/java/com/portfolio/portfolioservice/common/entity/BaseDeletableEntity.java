@@ -1,10 +1,11 @@
 package com.portfolio.portfolioservice.common.entity;
 
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 import java.time.LocalDateTime;
 
-@MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class BaseDeletableEntity {
 
     protected LocalDateTime createdAt = LocalDateTime.now();
