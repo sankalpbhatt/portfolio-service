@@ -1,7 +1,7 @@
 package com.portfolio.portfolioservice.industry.controller;
 
 import com.portfolio.portfolioservice.industry.model.request.CreateIndustryRequest;
-import com.portfolio.portfolioservice.industry.model.request.IndustryFilter;
+import com.portfolio.portfolioservice.industry.model.request.IndustrySearchCriteria;
 import com.portfolio.portfolioservice.industry.model.response.IndustryPageResponse;
 import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 import com.portfolio.portfolioservice.industry.service.IndustryService;
@@ -44,7 +44,7 @@ public class IndustryController {
 
     @GetMapping
     @Operation(summary = "Search Industry")
-    public IndustryPageResponse searchIndustry(@ParameterObject IndustryFilter filter) {
-        return industryService.searchIndustry(filter);
+    public IndustryPageResponse searchIndustry(@ParameterObject IndustrySearchCriteria industrySearchCriteria) {
+        return industryService.searchIndustry(industrySearchCriteria);
     }
 }

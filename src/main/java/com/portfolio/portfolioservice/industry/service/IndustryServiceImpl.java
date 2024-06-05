@@ -1,12 +1,16 @@
 package com.portfolio.portfolioservice.industry.service;
 
 import com.portfolio.portfolioservice.industry.entity.Industry;
+import com.portfolio.portfolioservice.industry.entity.specification.IndustrySpecification;
 import com.portfolio.portfolioservice.industry.mapper.IndustryMapper;
 import com.portfolio.portfolioservice.industry.model.request.CreateIndustryRequest;
-import com.portfolio.portfolioservice.industry.model.request.IndustryFilter;
+import com.portfolio.portfolioservice.industry.model.request.IndustrySearchCriteria;
 import com.portfolio.portfolioservice.industry.model.response.IndustryPageResponse;
 import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 import com.portfolio.portfolioservice.industry.repository.IndustryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +31,7 @@ public class IndustryServiceImpl implements IndustryService {
     @Transactional
     public IndustryResponse createIndustry(CreateIndustryRequest request) throws Exception {
         Industry industry = industryMapper.mapToEntity(request);
+        industry.setParentIndustry(industryRepository.findBySerialId(request.getParentIndustryId()).orElseThrow());
         industry = industryRepository.save(industry);
         return industryMapper.mapToResponse(industry);
     }
@@ -44,7 +49,10 @@ public class IndustryServiceImpl implements IndustryService {
     }
 
     @Override
-    public IndustryPageResponse searchIndustry(IndustryFilter filter) {
-        return null;
+    public IndustryPageResponse searchIndustry(IndustrySearchCriteria industrySearchCriteria) {
+        Pageable pageable = PageRequest.of(industrySearchCriteria.getPage(), industrySearchCriteria.getSize());
+        Page<Industry> industries = industryRepository
+                .findAll(IndustrySpecification.getProductsByCriteria(industrySearchCriteria), pageable);
+        return industryMapper.mapToResponse(industries);
     }
 }

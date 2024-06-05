@@ -27,7 +27,4 @@ logging:
     org:
       hibernate:
         SQL: WARN # Set this to DEBUG to print query in logs
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
+        type: TRACE

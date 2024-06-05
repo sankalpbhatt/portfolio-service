@@ -2,8 +2,6 @@ package com.portfolio.portfolioservice.industry.model.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.UUID;
-
 @Schema
 public class CreateIndustryRequest {
 
@@ -11,7 +9,7 @@ public class CreateIndustryRequest {
     private String industryName;
 
     @Schema(example = "I0001")
-    private UUID parentIndustryId;
+    private String parentIndustryId;
 
     @Schema(description = "Image URL To be used as thumbnail for the Industry")
     private String imageUrl;
@@ -20,7 +18,7 @@ public class CreateIndustryRequest {
         return industryName;
     }
 
-    public UUID getParentIndustryId() {
+    public String getParentIndustryId() {
         return parentIndustryId;
     }
 
