@@ -1,6 +1,5 @@
 package com.portfolio.portfolioservice.userinfo.service;
 
-import com.portfolio.portfolioservice.common.service.SequenceService;
 import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
 import com.portfolio.portfolioservice.userinfo.mapper.UserInfoMapper;
 import com.portfolio.portfolioservice.userinfo.model.request.CreateUserRequest;
@@ -13,15 +12,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     private final UserInfoRepository userInfoRepository;
     private final UserInfoMapper userInfoMapper;
-    private final SequenceService sequenceService;
 
     public UserInfoServiceImpl(
             UserInfoRepository userInfoRepository,
-            UserInfoMapper userInfoMapper,
-            SequenceService sequenceService) {
+            UserInfoMapper userInfoMapper) {
         this.userInfoRepository = userInfoRepository;
         this.userInfoMapper = userInfoMapper;
-        this.sequenceService = sequenceService;
     }
 
     @Override
@@ -32,8 +28,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public UserInfoResponse getUserInfoById(String id) throws Exception {
-        UserInfo userInfo = userInfoRepository.findBySerialId(id).orElseThrow(() -> new Exception());
+    public UserInfoResponse getUserInfoById(String id) {
+        UserInfo userInfo = userInfoRepository.findBySerialId(id).orElseThrow();
         return userInfoMapper.mapToResponse(userInfo);
     }
 }

@@ -14,8 +14,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 public @interface ValidUserInfo {
-
-    String message() default "The password does not comply with the rules.";
+    String message() default "Invalid UserInfo.";
 
     Class<?>[] groups() default {};
 

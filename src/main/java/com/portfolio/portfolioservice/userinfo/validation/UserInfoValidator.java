@@ -13,6 +13,9 @@ public class UserInfoValidator implements ConstraintValidator<ValidUserInfo, Cre
 
     private String message;
 
+    public UserInfoValidator() {
+    }
+
     @Override
     public void initialize(ValidUserInfo constraintAnnotation) {
         // DO nothing here

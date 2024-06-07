@@ -52,7 +52,7 @@ public class IndustryServiceImpl implements IndustryService {
     public IndustryPageResponse searchIndustry(IndustrySearchCriteria industrySearchCriteria) {
         Pageable pageable = PageRequest.of(industrySearchCriteria.getPage(), industrySearchCriteria.getSize());
         Page<Industry> industries = industryRepository
-                .findAll(IndustrySpecification.getProductsByCriteria(industrySearchCriteria), pageable);
+                .findAll(IndustrySpecification.getIndustriesByCriteria(industrySearchCriteria), pageable);
         return industryMapper.mapToResponse(industries);
     }
 }

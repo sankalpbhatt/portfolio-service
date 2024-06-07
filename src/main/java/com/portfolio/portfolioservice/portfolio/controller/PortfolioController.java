@@ -6,6 +6,7 @@ import com.portfolio.portfolioservice.portfolio.model.response.PortfolioPageResp
 import com.portfolio.portfolioservice.portfolio.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.portfolio.service.PortfolioService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class PortfolioController {
     @PostMapping
     @Operation(summary = "Create Portfolio")
     @ResponseStatus(HttpStatus.CREATED)
-    public PortfolioResponse createPortfolio(@RequestBody CreatePortfolioRequest request) throws Exception {
+    public PortfolioResponse createPortfolio(@RequestBody @Valid CreatePortfolioRequest request) throws Exception {
         return portfolioService.createPortfolio(request);
     }
 

@@ -2,8 +2,12 @@ package com.portfolio.portfolioservice.theme.mapper;
 
 import com.portfolio.portfolioservice.theme.entity.Theme;
 import com.portfolio.portfolioservice.theme.model.request.CreateThemeRequest;
+import com.portfolio.portfolioservice.theme.model.response.ThemePageResponse;
 import com.portfolio.portfolioservice.theme.model.response.ThemeResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ThemeMapper {
@@ -33,5 +37,16 @@ public class ThemeMapper {
         themeResponse.setSecondaryColor(theme.getSecondaryColor());
         themeResponse.setTextColor(theme.getTextColor());
         return themeResponse;
+    }
+
+    public ThemePageResponse mapToResponse(Page<Theme> themes) {
+        List<ThemeResponse> themeResponses = themes.stream().map(this::mapToResponse).toList();
+        ThemePageResponse response = new ThemePageResponse();
+        response.setContent(themeResponses);
+        response.setPageNumber(themes.getNumber());
+        response.setPageSize(themes.getSize());
+        response.setTotalElements(themes.getTotalElements());
+        response.setTotalPages(themes.getTotalPages());
+        return response;
     }
 }

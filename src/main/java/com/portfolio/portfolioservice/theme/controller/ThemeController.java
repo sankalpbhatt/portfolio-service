@@ -1,8 +1,11 @@
 package com.portfolio.portfolioservice.theme.controller;
 
 import com.portfolio.portfolioservice.theme.model.request.CreateThemeRequest;
+import com.portfolio.portfolioservice.theme.model.request.ThemeSearchCriteria;
+import com.portfolio.portfolioservice.theme.model.response.ThemePageResponse;
 import com.portfolio.portfolioservice.theme.model.response.ThemeResponse;
 import com.portfolio.portfolioservice.theme.service.ThemeService;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,5 +34,10 @@ public class ThemeController {
     @GetMapping("/{id}")
     public ThemeResponse getThemeById(@PathVariable(name = "id") String id) {
         return themeService.getThemeById(id);
+    }
+
+    @GetMapping
+    public ThemePageResponse searchTheme(@ParameterObject ThemeSearchCriteria searchCriteria) {
+        return themeService.searchTheme(searchCriteria);
     }
 }

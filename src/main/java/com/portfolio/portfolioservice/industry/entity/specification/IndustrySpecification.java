@@ -8,7 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class IndustrySpecification {
 
-    public static Specification<Industry> getProductsByCriteria(IndustrySearchCriteria criteria) {
+    public static Specification<Industry> getIndustriesByCriteria(IndustrySearchCriteria criteria) {
         return (root, query, builder) -> {
             Predicate predicate = builder.conjunction();
 

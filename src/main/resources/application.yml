@@ -24,6 +24,8 @@ flyway:
 
 logging:
   level:
+    jakarta:
+      validation: DEBUG
     org:
       hibernate:
         SQL: WARN # Set this to DEBUG to print query in logs
