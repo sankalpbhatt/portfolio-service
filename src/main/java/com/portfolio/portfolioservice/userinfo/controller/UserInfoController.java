@@ -1,11 +1,14 @@
 package com.portfolio.portfolioservice.userinfo.controller;
 
 import com.portfolio.portfolioservice.userinfo.model.request.CreateUserRequest;
+import com.portfolio.portfolioservice.userinfo.model.request.UserInfoSearchCriteria;
+import com.portfolio.portfolioservice.userinfo.model.response.UserInfoPageResponse;
 import com.portfolio.portfolioservice.userinfo.model.response.UserInfoResponse;
 import com.portfolio.portfolioservice.userinfo.service.UserInfoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,5 +43,13 @@ public class UserInfoController {
     @ApiResponse(description = "API to get UserInfo by ID")
     public UserInfoResponse getUserInfoById(@PathVariable(name = "id") String id) throws Exception {
         return userInfoService.getUserInfoById(id);
+    }
+
+    @GetMapping
+    @Operation(summary = "Search UserInfo")
+    @ResponseStatus(HttpStatus.OK)
+    @ApiResponse(description = "API to search User Info")
+    public UserInfoPageResponse searchUserInfo(@ParameterObject UserInfoSearchCriteria searchCriteria) {
+        return userInfoService.searchUserInfo(searchCriteria);
     }
 }

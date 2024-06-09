@@ -1,8 +1,8 @@
-package com.portfolio.portfolioservice.theme.model.request;
+package com.portfolio.portfolioservice.userinfo.model.request;
 
 import com.portfolio.portfolioservice.common.model.request.StringFilter;
 
-public class ThemeSearchCriteria {
+public class UserInfoSearchCriteria {
 
     private StringFilter name;
     private int page;
@@ -25,9 +25,6 @@ public class ThemeSearchCriteria {
     }
 
     public int getSize() {
-        if (size == 0) {
-            return 1;
-        }
         return size;
     }
 

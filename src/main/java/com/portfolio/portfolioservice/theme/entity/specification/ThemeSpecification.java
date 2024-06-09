@@ -18,16 +18,16 @@ public class ThemeSpecification {
                 StringFilter nameFilter = searchCriteria.getName();
                 switch (nameFilter.getOperation()) {
                     case CONTAINS:
-                        predicate = builder.and(predicate, builder.like(root.get("name"), "%" + nameFilter.getValue() + "%"));
+                        predicate = builder.and(predicate, builder.like(root.get("name"), "%" + nameFilter.getValue().toLowerCase() + "%"));
                         break;
                     case EQUALS:
-                        builder.and(predicate, builder.equal(root.get("name"), nameFilter.getValue()));
+                        predicate = builder.and(predicate, builder.equal(builder.lower(root.get("name")), nameFilter.getValue().toLowerCase()));
                         break;
                     case STARTS_WITH:
-                        builder.and(predicate, builder.like(root.get("name"), nameFilter.getValue() + "%"));
+                        predicate = builder.and(predicate, builder.like(builder.lower(root.get("name")), nameFilter.getValue().toLowerCase() + "%"));
                         break;
                     case ENDS_WITH:
-                        builder.and(predicate, builder.like(root.get("name"), "%" + nameFilter.getValue()));
+                        predicate = builder.and(predicate, builder.like(builder.lower(root.get("name")), "%" + nameFilter.getValue().toLowerCase()));
                         break;
                 }
 

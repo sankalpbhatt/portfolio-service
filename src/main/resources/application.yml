@@ -28,5 +28,5 @@ logging:
       validation: DEBUG
     org:
       hibernate:
-        SQL: WARN # Set this to DEBUG to print query in logs
+        SQL: DEBUG # Set this to DEBUG to print query in logs
         type: TRACE

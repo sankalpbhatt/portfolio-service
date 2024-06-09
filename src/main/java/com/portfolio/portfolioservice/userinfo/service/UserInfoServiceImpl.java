@@ -1,10 +1,16 @@
 package com.portfolio.portfolioservice.userinfo.service;
 
 import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
+import com.portfolio.portfolioservice.userinfo.entity.speicification.UserInfoSpecification;
 import com.portfolio.portfolioservice.userinfo.mapper.UserInfoMapper;
 import com.portfolio.portfolioservice.userinfo.model.request.CreateUserRequest;
+import com.portfolio.portfolioservice.userinfo.model.request.UserInfoSearchCriteria;
+import com.portfolio.portfolioservice.userinfo.model.response.UserInfoPageResponse;
 import com.portfolio.portfolioservice.userinfo.model.response.UserInfoResponse;
 import com.portfolio.portfolioservice.userinfo.repository.UserInfoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,5 +37,13 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserInfoResponse getUserInfoById(String id) {
         UserInfo userInfo = userInfoRepository.findBySerialId(id).orElseThrow();
         return userInfoMapper.mapToResponse(userInfo);
+    }
+
+    @Override
+    public UserInfoPageResponse searchUserInfo(UserInfoSearchCriteria searchCriteria) {
+        Pageable pageable = PageRequest.of(searchCriteria.getPage(), searchCriteria.getSize());
+        Page<UserInfo> userInfoPage =
+                userInfoRepository.findAll(UserInfoSpecification.getUserInfoBySpecification(searchCriteria), pageable);
+        return userInfoMapper.mapToResponse(userInfoPage);
     }
 }

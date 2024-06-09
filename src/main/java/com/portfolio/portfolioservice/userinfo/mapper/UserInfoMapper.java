@@ -4,7 +4,9 @@ import com.portfolio.portfolioservice.address.mapper.AddressMapper;
 import com.portfolio.portfolioservice.common.service.SequenceService;
 import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
 import com.portfolio.portfolioservice.userinfo.model.request.CreateUserRequest;
+import com.portfolio.portfolioservice.userinfo.model.response.UserInfoPageResponse;
 import com.portfolio.portfolioservice.userinfo.model.response.UserInfoResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -41,5 +43,15 @@ public class UserInfoMapper {
         userInfo.setImageUrl(createUserRequest.imageUrl());
         userInfo.setAddresses(addressMapper.mapToEntity(createUserRequest.addresses()));
         return userInfo;
+    }
+
+    public UserInfoPageResponse mapToResponse(Page<UserInfo> userInfoPage) {
+        UserInfoPageResponse response = new UserInfoPageResponse();
+        response.setContent(userInfoPage.stream().map(this::mapToResponse).toList());
+        response.setPageNumber(userInfoPage.getNumber());
+        response.setTotalElements(userInfoPage.getTotalElements());
+        response.setPageSize(userInfoPage.getSize());
+        response.setTotalPages(userInfoPage.getTotalPages());
+        return response;
     }
 }
