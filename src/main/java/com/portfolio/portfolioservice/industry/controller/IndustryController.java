@@ -7,9 +7,11 @@ import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 import com.portfolio.portfolioservice.industry.service.IndustryService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +48,12 @@ public class IndustryController {
     @Operation(summary = "Search Industry")
     public IndustryPageResponse searchIndustry(@ParameterObject IndustrySearchCriteria industrySearchCriteria) {
         return industryService.searchIndustry(industrySearchCriteria);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Operation(summary = "Delete industry")
+    public void deleteIndustry(@PathVariable @NotNull String id) {
+        industryService.deleteIndustry(id);
     }
 }

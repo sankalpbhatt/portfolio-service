@@ -55,4 +55,10 @@ public class IndustryServiceImpl implements IndustryService {
                 .findAll(IndustrySpecification.getIndustriesByCriteria(industrySearchCriteria), pageable);
         return industryMapper.mapToResponse(industries);
     }
+
+    @Override
+    public void deleteIndustry(String id) {
+        Industry industry = industryRepository.findBySerialId(id).orElseThrow();
+        industryRepository.deleteById(industry.getId());
+    }
 }

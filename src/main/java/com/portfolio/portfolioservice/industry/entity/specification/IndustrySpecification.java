@@ -14,20 +14,16 @@ public class IndustrySpecification {
 
             if (criteria.getName() != null) {
                 StringFilter nameFilter = criteria.getName();
-                switch (nameFilter.getOperation()) {
-                    case CONTAINS:
-                        predicate = builder.and(predicate, builder.like(root.get("industryName"), "%" + nameFilter.getValue() + "%"));
-                        break;
-                    case EQUALS:
-                        predicate = builder.and(predicate, builder.equal(root.get("industryName"), nameFilter.getValue()));
-                        break;
-                    case STARTS_WITH:
-                        predicate = builder.and(predicate, builder.like(root.get("industryName"), nameFilter.getValue() + "%"));
-                        break;
-                    case ENDS_WITH:
-                        predicate = builder.and(predicate, builder.like(root.get("industryName"), "%" + nameFilter.getValue()));
-                        break;
-                }
+                predicate = switch (nameFilter.getOperation()) {
+                    case CONTAINS ->
+                            builder.and(predicate, builder.like(root.get("industryName"), "%" + nameFilter.getValue() + "%"));
+                    case EQUALS ->
+                            builder.and(predicate, builder.equal(root.get("industryName"), nameFilter.getValue()));
+                    case STARTS_WITH ->
+                            builder.and(predicate, builder.like(root.get("industryName"), nameFilter.getValue() + "%"));
+                    case ENDS_WITH ->
+                            builder.and(predicate, builder.like(root.get("industryName"), "%" + nameFilter.getValue()));
+                };
             }
             return predicate;
         };

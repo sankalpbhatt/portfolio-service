@@ -4,7 +4,9 @@ import com.portfolio.portfolioservice.common.service.SequenceService;
 import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;
 import com.portfolio.portfolioservice.role.entity.Role;
 import com.portfolio.portfolioservice.role.model.request.CreateRoleRequest;
+import com.portfolio.portfolioservice.role.model.response.RolePageResponse;
 import com.portfolio.portfolioservice.role.model.response.RoleResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -32,5 +34,15 @@ public class RoleMapper {
         response.setImageUrl(role.getImageUrl());
         response.setIndustry(industryResponse);
         return response;
+    }
+
+    public RolePageResponse mapToResponse(Page<Role> roles) {
+        RolePageResponse pageResponse = new RolePageResponse();
+        pageResponse.setContent(roles.stream().map(role -> mapToResponse(role, null)).toList());
+        pageResponse.setPageNumber(roles.getNumber());
+        pageResponse.setPageSize(roles.getSize());
+        pageResponse.setTotalElements(roles.getTotalElements());
+        pageResponse.setTotalPages(roles.getTotalPages());
+        return pageResponse;
     }
 }

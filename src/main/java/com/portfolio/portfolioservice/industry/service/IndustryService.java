@@ -16,4 +16,6 @@ public interface IndustryService {
     IndustryResponse getIndustryById(UUID id);
 
     IndustryPageResponse searchIndustry(IndustrySearchCriteria industrySearchCriteria);
+
+    void deleteIndustry(String id);
 }
