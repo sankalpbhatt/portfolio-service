@@ -4,7 +4,6 @@ import com.portfolio.portfolioservice.common.service.SequenceService;
 import com.portfolio.portfolioservice.portfolio.entity.Portfolio;
 import com.portfolio.portfolioservice.portfolio.mapper.PortfolioMapper;
 import com.portfolio.portfolioservice.portfolio.model.request.CreatePortfolioRequest;
-import com.portfolio.portfolioservice.portfolio.model.request.PortfolioFilter;
 import com.portfolio.portfolioservice.portfolio.model.response.PortfolioResponse;
 import com.portfolio.portfolioservice.portfolio.repository.PortfolioRepository;
 import com.portfolio.portfolioservice.theme.entity.Theme;
@@ -13,6 +12,8 @@ import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
 import com.portfolio.portfolioservice.userinfo.repository.UserInfoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 
 @Service
 public class PortfolioServiceImpl implements PortfolioService {
@@ -51,12 +52,14 @@ public class PortfolioServiceImpl implements PortfolioService {
     }
 
     @Override
-    public PortfolioResponse searchPortfolio(PortfolioFilter filter) {
-        return null;
+    public PortfolioResponse getPortfolioById(String id) {
+        return portfolioMapper.mapEntityToResponse(portfolioRepository.findBySerialId(id).orElseThrow());
     }
 
     @Override
-    public PortfolioResponse getPortfolioById(String id) {
-        return null;
+    public void deletePortfolio(String id) {
+        Portfolio portfolio = portfolioRepository.findBySerialId(id).orElseThrow();
+        portfolio.setDeletedAt(LocalDateTime.now());
+        portfolioRepository.save(portfolio);
     }
 }
