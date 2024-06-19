@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -59,6 +60,7 @@ public class IndustryServiceImpl implements IndustryService {
     @Override
     public void deleteIndustry(String id) {
         Industry industry = industryRepository.findBySerialId(id).orElseThrow();
-        industryRepository.deleteById(industry.getId());
+        industry.setDeletedAt(LocalDateTime.now());
+        industryRepository.save(industry);
     }
 }
