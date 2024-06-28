@@ -5,7 +5,7 @@ import com.portfolio.portfolioservice.template.model.response.TemplateResponse;
 
 public interface TemplateService {
 
-    TemplateResponse createTemplate(CreateTemplateRequest request) throws Exception;
+  TemplateResponse createTemplate(CreateTemplateRequest request) throws Exception;
 
-    TemplateResponse getTemplateById(String id);
+  TemplateResponse getTemplateById(String id);
 }

@@ -1,17 +1,21 @@
 package com.portfolio.portfolioservice.userinfo.repository;
 
-import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Optional;
-import java.util.UUID;
+import com.portfolio.portfolioservice.userinfo.entity.UserInfo;
 
-public interface UserInfoRepository extends JpaRepository<UserInfo, UUID>, JpaSpecificationExecutor<UserInfo> {
+public interface UserInfoRepository
+    extends JpaRepository<UserInfo, UUID>, JpaSpecificationExecutor<UserInfo> {
 
-    Optional<UserInfo> findBySerialId(String serialId);
+  Optional<UserInfo> findBySerialId(String serialId);
 
-    @Query(value = "SELECT id FROM portfolio.user_info WHERE serial_id = :serialId", nativeQuery = true)
-    Optional<UUID> findIdBySerialId(String serialId);
+  @Query(
+      value = "SELECT id FROM portfolio.user_info WHERE serial_id = :serialId",
+      nativeQuery = true)
+  Optional<UUID> findIdBySerialId(String serialId);
 }

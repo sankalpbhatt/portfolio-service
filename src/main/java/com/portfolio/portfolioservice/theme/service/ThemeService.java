@@ -7,9 +7,9 @@ import com.portfolio.portfolioservice.theme.model.response.ThemeResponse;
 
 public interface ThemeService {
 
-    ThemeResponse getThemeById(String id);
+  ThemeResponse getThemeById(String id);
 
-    ThemeResponse createTheme(CreateThemeRequest request) throws Exception;
+  ThemeResponse createTheme(CreateThemeRequest request) throws Exception;
 
-    ThemePageResponse searchTheme(ThemeSearchCriteria searchCriteria);
+  ThemePageResponse searchTheme(ThemeSearchCriteria searchCriteria);
 }

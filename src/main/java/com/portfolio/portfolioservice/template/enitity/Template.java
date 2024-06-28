@@ -1,78 +1,80 @@
 package com.portfolio.portfolioservice.template.enitity;
 
+import java.util.UUID;
+
 import com.portfolio.portfolioservice.common.entity.BaseDeletableEntity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "template", schema = "portfolio")
 public class Template extends BaseDeletableEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    private String serialId;
-    private String name;
-    private String description;
-    private String layout;
-    private String roleId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    private String imageUrl;
+  private String serialId;
+  private String name;
+  private String description;
+  private String layout;
+  private String roleId;
 
-    public UUID getId() {
-        return id;
-    }
+  private String imageUrl;
 
-    public String getSerialId() {
-        return serialId;
-    }
+  public UUID getId() {
+    return id;
+  }
 
-    public void setSerialId(String serialId) {
-        this.serialId = serialId;
-    }
+  public String getSerialId() {
+    return serialId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setSerialId(String serialId) {
+    this.serialId = serialId;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public String getLayout() {
-        return layout;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setLayout(String layout) {
-        this.layout = layout;
-    }
+  public String getLayout() {
+    return layout;
+  }
 
-    public String getRoleId() {
-        return roleId;
-    }
+  public void setLayout(String layout) {
+    this.layout = layout;
+  }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
-    }
+  public String getRoleId() {
+    return roleId;
+  }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+  public void setRoleId(String roleId) {
+    this.roleId = roleId;
+  }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
 }

@@ -6,11 +6,11 @@ import com.portfolio.portfolioservice.portfolio.model.response.PortfolioResponse
 
 public interface PortfolioService {
 
-    PortfolioResponse createPortfolio(CreatePortfolioRequest request) throws Exception;
+  PortfolioResponse createPortfolio(CreatePortfolioRequest request) throws Exception;
 
-    PortfolioResponse getPortfolioById(String id);
+  PortfolioResponse getPortfolioById(String id);
 
-    <T> PortfolioResponse addPortfolioDetails(AddPortfolioDetailsRequest<T> request) throws Exception;
+  <T> PortfolioResponse addPortfolioDetails(AddPortfolioDetailsRequest<T> request) throws Exception;
 
-    void deletePortfolio(String id);
+  void deletePortfolio(String id);
 }

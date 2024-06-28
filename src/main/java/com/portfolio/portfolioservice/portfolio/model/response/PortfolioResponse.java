@@ -4,9 +4,4 @@ import com.portfolio.portfolioservice.portfolio.model.PersonalInformation;
 import com.portfolio.portfolioservice.theme.model.response.ThemeResponse;
 
 public record PortfolioResponse(
-        String id,
-        ThemeResponse themeResponse,
-        PersonalInformation personalInformation
-
-) {
-}
+    String id, ThemeResponse themeResponse, PersonalInformation personalInformation) {}

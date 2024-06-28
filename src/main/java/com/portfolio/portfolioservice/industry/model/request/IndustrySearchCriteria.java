@@ -1,36 +1,38 @@
 package com.portfolio.portfolioservice.industry.model.request;
 
 import com.portfolio.portfolioservice.common.model.request.StringFilter;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class IndustrySearchCriteria {
 
-    @Schema(description = "Pass the search key in StringFilter")
-    private StringFilter name;
-    private int page;
-    private int size;
+  @Schema(description = "Pass the search key in StringFilter")
+  private StringFilter name;
 
-    public StringFilter getName() {
-        return name;
-    }
+  private int page;
+  private int size;
 
-    public void setName(StringFilter name) {
-        this.name = name;
-    }
+  public StringFilter getName() {
+    return name;
+  }
 
-    public int getPage() {
-        return page;
-    }
+  public void setName(StringFilter name) {
+    this.name = name;
+  }
 
-    public void setPage(int page) {
-        this.page = page;
-    }
+  public int getPage() {
+    return page;
+  }
 
-    public int getSize() {
-        return size == 0 ? 20 : size;
-    }
+  public void setPage(int page) {
+    this.page = page;
+  }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
+  public int getSize() {
+    return size == 0 ? 20 : size;
+  }
+
+  public void setSize(int size) {
+    this.size = size;
+  }
 }

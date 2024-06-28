@@ -7,9 +7,9 @@ import com.portfolio.portfolioservice.role.model.response.RoleResponse;
 
 public interface RoleService {
 
-    RoleResponse createRole(CreateRoleRequest request) throws Exception;
+  RoleResponse createRole(CreateRoleRequest request) throws Exception;
 
-    RoleResponse getRoleById(String id);
+  RoleResponse getRoleById(String id);
 
-    RolePageResponse searchCriteria(RoleSearchCriteria searchCriteria);
+  RolePageResponse searchCriteria(RoleSearchCriteria searchCriteria);
 }

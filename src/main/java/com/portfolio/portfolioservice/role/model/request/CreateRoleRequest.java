@@ -2,19 +2,19 @@ package com.portfolio.portfolioservice.role.model.request;
 
 public class CreateRoleRequest {
 
-    private String name;
-    private String industryId;
-    private String imageUrl;
+  private String name;
+  private String industryId;
+  private String imageUrl;
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getIndustryId() {
-        return industryId;
-    }
+  public String getIndustryId() {
+    return industryId;
+  }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
 }

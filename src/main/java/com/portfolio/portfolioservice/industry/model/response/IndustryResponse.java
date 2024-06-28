@@ -5,41 +5,42 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Response of Industry resource")
 public class IndustryResponse {
 
-    private String id;
-    private String industryName;
-    private IndustryResponse parentIndustry;
-    @Schema(description = "Image URL To be used as thumbnail for the Industry")
-    private String imageUrl;
+  private String id;
+  private String industryName;
+  private IndustryResponse parentIndustry;
 
-    public String getId() {
-        return id;
-    }
+  @Schema(description = "Image URL To be used as thumbnail for the Industry")
+  private String imageUrl;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public String getIndustryName() {
-        return industryName;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public IndustryResponse getParentIndustry() {
-        return parentIndustry;
-    }
+  public String getIndustryName() {
+    return industryName;
+  }
 
-    public void setParentIndustry(IndustryResponse parentIndustry) {
-        this.parentIndustry = parentIndustry;
-    }
+  public IndustryResponse getParentIndustry() {
+    return parentIndustry;
+  }
 
-    public void setIndustryName(String industryName) {
-        this.industryName = industryName;
-    }
+  public void setParentIndustry(IndustryResponse parentIndustry) {
+    this.parentIndustry = parentIndustry;
+  }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+  public void setIndustryName(String industryName) {
+    this.industryName = industryName;
+  }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
 }
