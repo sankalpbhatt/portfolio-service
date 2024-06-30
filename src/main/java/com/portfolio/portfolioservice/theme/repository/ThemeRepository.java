@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.theme.repository;
 
 import java.util.Optional;
@@ -9,6 +13,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.portfolio.portfolioservice.theme.entity.Theme;
 
+/**
+ * @author sankalpbhatt
+ */
 public interface ThemeRepository
     extends JpaRepository<Theme, UUID>, JpaSpecificationExecutor<Theme> {
   Optional<Theme> findBySerialId(String id);

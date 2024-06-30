@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.role.model.request;
 
 public class CreateRoleRequest {

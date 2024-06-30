@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.common.entity;
 
 import java.time.LocalDateTime;

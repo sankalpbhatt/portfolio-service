@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.role.mapper;
 
 import org.springframework.data.domain.Page;

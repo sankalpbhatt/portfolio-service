@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.userinfo.validation;
 
 import java.lang.annotation.Documented;

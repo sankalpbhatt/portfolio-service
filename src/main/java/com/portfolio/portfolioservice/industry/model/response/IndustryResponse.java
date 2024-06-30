@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.industry.model.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;

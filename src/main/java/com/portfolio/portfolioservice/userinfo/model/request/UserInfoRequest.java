@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.userinfo.model.request;
 
 public class UserInfoRequest {

@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.template.mapper;
 
 import org.springframework.stereotype.Component;

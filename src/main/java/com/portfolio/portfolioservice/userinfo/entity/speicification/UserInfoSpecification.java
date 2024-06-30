@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.userinfo.entity.speicification;
 
 import java.util.Objects;

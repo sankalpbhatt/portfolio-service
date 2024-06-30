@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.theme.model.request;
 
 import com.portfolio.portfolioservice.common.model.request.StringFilter;

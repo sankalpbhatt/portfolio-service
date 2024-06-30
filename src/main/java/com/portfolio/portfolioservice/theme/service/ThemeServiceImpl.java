@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.theme.service;
 
 import org.springframework.data.domain.Page;

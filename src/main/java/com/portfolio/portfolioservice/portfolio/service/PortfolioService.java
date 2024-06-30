@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.portfolio.service;
 
 import com.portfolio.portfolioservice.portfolio.model.request.AddPortfolioDetailsRequest;

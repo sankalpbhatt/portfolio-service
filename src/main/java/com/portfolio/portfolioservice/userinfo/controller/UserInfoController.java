@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.userinfo.controller;
 
 import org.springdoc.core.annotations.ParameterObject;

@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.role.entity.sepcification;
 
 import org.springframework.data.jpa.domain.Specification;

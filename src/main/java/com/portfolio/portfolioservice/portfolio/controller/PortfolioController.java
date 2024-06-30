@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.portfolio.controller;
 
 import org.springframework.http.HttpStatus;

@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.role.model.response;
 
 import com.portfolio.portfolioservice.industry.model.response.IndustryResponse;

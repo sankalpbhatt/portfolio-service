@@ -1,3 +1,7 @@
+/**
+ * Placeholder for Licence information
+ */
+
 package com.portfolio.portfolioservice.template.service;
 
 import com.portfolio.portfolioservice.template.model.request.CreateTemplateRequest;

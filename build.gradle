@@ -19,9 +19,16 @@ spotless {
     java {
         googleJavaFormat() // Applies Google Java Format
         importOrder('java', 'javax', 'org', 'com')
+        licenseHeaderFile 'licenseHeader.txt' // Apply license header from file, currently empty
+
+        // Apply custom replacement to add newlines before package declarations
+        custom 'replaceJavaPackage', {
+            def packagePattern = ~/\n?package / // Match the package declaration with an optional preceding newline
+            it.replaceAll(packagePattern, '\n\npackage ')
+        }
     }
-    // Example for applying to Gradle files
-    format 'misc', {
+
+    format('misc') {
         target '**/*.gradle', '**/*.md', '**/.gitignore'
         indentWithSpaces()
         trimTrailingWhitespace()
