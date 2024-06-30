@@ -1,14 +1,55 @@
 
+
+
+CREATE TABLE portfolio.industries (
+    id UUID PRIMARY KEY,
+    serial_id varchar(20) NOT NULL ,
+    industry_name VARCHAR(100) NOT NULL,
+    parent_industry_id UUID DEFAULT NULL,
+    image_url VARCHAR(255),
+    created_at TIMESTAMP not null DEFAULT NOW(),
+    updated_at TIMESTAMP not null DEFAULT NOW(),
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (parent_industry_id) REFERENCES portfolio.industries(id)
+);
+
+CREATE TABLE portfolio.roles (
+    serial_id varchar(20) NOT NULL ,
+    id UUID PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    image_url VARCHAR(255),
+    industry_id UUID,
+    created_at TIMESTAMP not null DEFAULT NOW(),
+    updated_at TIMESTAMP not null DEFAULT NOW(),
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (industry_id) REFERENCES portfolio.industries(id)
+);
+
+CREATE TABLE portfolio.templates (
+    serial_id varchar(20) NOT NULL ,
+    id UUID PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    role_id UUID,
+    layout TEXT,
+    image_url VARCHAR(255),
+    created_at TIMESTAMP not null DEFAULT NOW(),
+    updated_at TIMESTAMP not null DEFAULT NOW(),
+    deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (role_id) REFERENCES portfolio.roles(id)
+);
+
 CREATE TABLE portfolio.portfolio (
     id UUID PRIMARY KEY,
     serial_id VARCHAR(20) NOT NULL ,
     description VARCHAR(255) NOT NULL,
-    theme_id UUID,
+    template_id UUID,
     user_info_id UUID NOT NULL,
     bio VARCHAR(255),
     created_at TIMESTAMP NOT NULL DEFAULT now(),
     updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now()
+    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
+    FOREIGN KEY (template_id) REFERENCES portfolio.templates(id)
 );
 
 CREATE TABLE portfolio.theme (
@@ -16,15 +57,16 @@ CREATE TABLE portfolio.theme (
     serial_id VARCHAR(20) NOT NULL ,
     name VARCHAR(55) NOT NULL,
     description VARCHAR(225) NOT NULL,
-    text_color VARCHAR(10),
-    background_color VARCHAR(10),
-    primary_color VARCHAR(10),
-    secondary_color VARCHAR(10),
-    font VARCHAR(20),
-    font_size NUMERIC,
+    template_id UUID,
+    background JSONB,
+    text JSONB,
+    button JSONB,
+    border JSONB,
+    font JSONB,
     created_at TIMESTAMP NOT NULL DEFAULT now(),
     updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now()
+    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
+    FOREIGN KEY (template_id) REFERENCES portfolio.templates(id)
 );
 
 CREATE TABLE portfolio.user_info (
@@ -64,41 +106,4 @@ create table portfolio.sequence_numbers (
    created_at TIMESTAMP NOT NULL DEFAULT now(),
    updated_at TIMESTAMP NOT NULL DEFAULT now(),
    deleted_at TIMESTAMP NOT NULL DEFAULT now()
-);
-
-CREATE TABLE portfolio.industries (
-    id UUID PRIMARY KEY,
-    serial_id varchar(20) NOT NULL ,
-    industry_name VARCHAR(100) NOT NULL,
-    parent_industry_id UUID DEFAULT NULL,
-    image_url VARCHAR(255),
-    created_at TIMESTAMP not null DEFAULT NOW(),
-    updated_at TIMESTAMP not null DEFAULT NOW(),
-    deleted_at TIMESTAMP NULL DEFAULT NULL,
-    FOREIGN KEY (parent_industry_id) REFERENCES portfolio.industries(id)
-);
-
-CREATE TABLE portfolio.roles (
-    serial_id varchar(20) NOT NULL ,
-    id UUID PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    image_url VARCHAR(255),
-    industry_id UUID,
-    created_at TIMESTAMP not null DEFAULT NOW(),
-    updated_at TIMESTAMP not null DEFAULT NOW(),
-    deleted_at TIMESTAMP NULL DEFAULT NULL,
-    FOREIGN KEY (industry_id) REFERENCES portfolio.industries(id)
-);
-
-CREATE TABLE portfolio.portfolio_templates (
-    serial_id varchar(20) NOT NULL ,
-    id UUID PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    template_description TEXT,
-    role_id UUID,
-    image_url VARCHAR(255),
-    created_at TIMESTAMP not null DEFAULT NOW(),
-    updated_at TIMESTAMP not null DEFAULT NOW(),
-    deleted_at TIMESTAMP NULL DEFAULT NULL,
-    FOREIGN KEY (role_id) REFERENCES portfolio.roles(id)
 );

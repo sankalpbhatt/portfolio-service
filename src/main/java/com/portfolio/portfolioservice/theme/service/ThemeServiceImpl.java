@@ -9,7 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.portfolio.portfolioservice.common.service.SequenceService;
+import com.portfolio.portfolioservice.template.enitity.Template;
+import com.portfolio.portfolioservice.template.repository.TemplateRepository;
 import com.portfolio.portfolioservice.theme.entity.Theme;
 import com.portfolio.portfolioservice.theme.entity.specification.ThemeSpecification;
 import com.portfolio.portfolioservice.theme.mapper.ThemeMapper;
@@ -23,14 +24,16 @@ import com.portfolio.portfolioservice.theme.repository.ThemeRepository;
 public class ThemeServiceImpl implements ThemeService {
 
   private final ThemeRepository themeRepository;
+  private final TemplateRepository templateRepository;
   private final ThemeMapper themeMapper;
-  private final SequenceService sequenceService;
 
   public ThemeServiceImpl(
-      ThemeRepository themeRepository, ThemeMapper themeMapper, SequenceService sequenceService) {
+      ThemeRepository themeRepository,
+      TemplateRepository templateRepository,
+      ThemeMapper themeMapper) {
     this.themeRepository = themeRepository;
+    this.templateRepository = templateRepository;
     this.themeMapper = themeMapper;
-    this.sequenceService = sequenceService;
   }
 
   @Override
@@ -42,9 +45,8 @@ public class ThemeServiceImpl implements ThemeService {
   @Override
   public ThemeResponse createTheme(CreateThemeRequest request) throws Exception {
     Theme theme = themeMapper.mapToEntity(request);
-    theme.setSerialId(
-        SequenceService.SequenceType.THEME.getPrefix()
-            + sequenceService.getNextSequenceNumber(SequenceService.SequenceType.THEME));
+    Template template = templateRepository.findBySerialId(request.templateId()).orElseThrow();
+    theme.setTemplate(template);
     theme = themeRepository.save(theme);
     return themeMapper.mapToResponse(theme);
   }

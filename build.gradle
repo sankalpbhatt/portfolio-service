@@ -7,6 +7,10 @@ plugins {
 
 }
 
+ext {
+    OPEN_API_STARTER = '2.1.0'
+    HIBERNATE_TYPE = '2.2.2'
+}
 group = 'com.portfolio'
 version = '0.0.1-SNAPSHOT'
 
@@ -48,6 +52,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
     implementation 'org.flywaydb:flyway-core'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // implementation 'com.vladmihalcea:hibernate-types-60:2.20.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

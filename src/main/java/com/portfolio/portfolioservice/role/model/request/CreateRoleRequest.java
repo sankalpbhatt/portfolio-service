@@ -4,21 +4,27 @@
 
 package com.portfolio.portfolioservice.role.model.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema
 public class CreateRoleRequest {
 
-  private String name;
-  private String industryId;
-  private String imageUrl;
+    @Schema(description = "Name of the role")
+    private String name;
+    @Schema(description = "String id of the Industry against which role is created")
+    private String industryId;
+    @Schema(description = "Image URL for the role")
+    private String imageUrl;
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getIndustryId() {
-    return industryId;
-  }
+    public String getIndustryId() {
+        return industryId;
+    }
 
-  public String getImageUrl() {
-    return imageUrl;
-  }
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

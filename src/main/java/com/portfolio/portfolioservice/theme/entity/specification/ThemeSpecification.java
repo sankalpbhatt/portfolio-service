@@ -21,38 +21,31 @@ public class ThemeSpecification {
       Predicate predicate = builder.conjunction();
       if (Objects.nonNull(searchCriteria.getName())) {
         StringFilter nameFilter = searchCriteria.getName();
-        switch (nameFilter.getOperation()) {
-          case CONTAINS:
-            predicate =
-                builder.and(
-                    predicate,
-                    builder.like(
-                        root.get("name"), "%" + nameFilter.getValue().toLowerCase() + "%"));
-            break;
-          case EQUALS:
-            predicate =
-                builder.and(
-                    predicate,
-                    builder.equal(
-                        builder.lower(root.get("name")), nameFilter.getValue().toLowerCase()));
-            break;
-          case STARTS_WITH:
-            predicate =
-                builder.and(
-                    predicate,
-                    builder.like(
-                        builder.lower(root.get("name")),
-                        nameFilter.getValue().toLowerCase() + "%"));
-            break;
-          case ENDS_WITH:
-            predicate =
-                builder.and(
-                    predicate,
-                    builder.like(
-                        builder.lower(root.get("name")),
-                        "%" + nameFilter.getValue().toLowerCase()));
-            break;
-        }
+        predicate =
+            switch (nameFilter.getOperation()) {
+              case CONTAINS ->
+                  builder.and(
+                      predicate,
+                      builder.like(
+                          root.get("name"), "%" + nameFilter.getValue().toLowerCase() + "%"));
+              case EQUALS ->
+                  builder.and(
+                      predicate,
+                      builder.equal(
+                          builder.lower(root.get("name")), nameFilter.getValue().toLowerCase()));
+              case STARTS_WITH ->
+                  builder.and(
+                      predicate,
+                      builder.like(
+                          builder.lower(root.get("name")),
+                          nameFilter.getValue().toLowerCase() + "%"));
+              case ENDS_WITH ->
+                  builder.and(
+                      predicate,
+                      builder.like(
+                          builder.lower(root.get("name")),
+                          "%" + nameFilter.getValue().toLowerCase()));
+            };
       }
       return predicate;
     };

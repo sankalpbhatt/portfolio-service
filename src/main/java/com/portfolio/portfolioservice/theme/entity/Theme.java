@@ -4,111 +4,123 @@
 
 package com.portfolio.portfolioservice.theme.entity;
 
-import java.util.UUID;
-
 import com.portfolio.portfolioservice.common.entity.BaseDeletableEntity;
-
+import com.portfolio.portfolioservice.template.enitity.Template;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "theme", schema = "portfolio")
 public class Theme extends BaseDeletableEntity {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
-  private String serialId;
-  private String name;
-  private String description;
-  private String textColor;
-  private String backgroundColor;
-  private String primaryColor;
-  private String secondaryColor;
-  private String font;
-  private Integer fontSize;
+    private String serialId;
+    private String name;
+    private String description;
 
-  public UUID getId() {
-    return id;
-  }
+    @ManyToOne
+    @JoinColumn(name = "template_id", nullable = false)
+    private Template template;
 
-  public void setId(UUID id) {
-    this.id = id;
-  }
+    @Column(columnDefinition = "jsonb")
+    private String text;
 
-  public String getSerialId() {
-    return serialId;
-  }
+    @Column(columnDefinition = "jsonb")
+    private String background;
 
-  public void setSerialId(String serialId) {
-    this.serialId = serialId;
-  }
+    @Column(columnDefinition = "jsonb")
+    private String button;
 
-  public String getName() {
-    return name;
-  }
+    @Column(columnDefinition = "jsonb")
+    private String border;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    @Column(columnDefinition = "jsonb")
+    private String font;
 
-  public String getDescription() {
-    return description;
-  }
+    public UUID getId() {
+        return id;
+    }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+    public String getSerialId() {
+        return serialId;
+    }
 
-  public String getTextColor() {
-    return textColor;
-  }
+    public void setSerialId(String serialId) {
+        this.serialId = serialId;
+    }
 
-  public void setTextColor(String textColor) {
-    this.textColor = textColor;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getBackgroundColor() {
-    return backgroundColor;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setBackgroundColor(String backgroundColor) {
-    this.backgroundColor = backgroundColor;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public String getPrimaryColor() {
-    return primaryColor;
-  }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-  public void setPrimaryColor(String primaryColor) {
-    this.primaryColor = primaryColor;
-  }
+    public Template getTemplate() {
+        return template;
+    }
 
-  public String getSecondaryColor() {
-    return secondaryColor;
-  }
+    public void setTemplate(Template template) {
+        this.template = template;
+    }
 
-  public void setSecondaryColor(String secondaryColor) {
-    this.secondaryColor = secondaryColor;
-  }
+    public String getText() {
+        return text;
+    }
 
-  public String getFont() {
-    return font;
-  }
+    public void setText(String text) {
+        this.text = text;
+    }
 
-  public void setFont(String font) {
-    this.font = font;
-  }
+    public String getBackground() {
+        return background;
+    }
 
-  public Integer getFontSize() {
-    return fontSize;
-  }
+    public void setBackground(String background) {
+        this.background = background;
+    }
 
-  public void setFontSize(Integer fontSize) {
-    this.fontSize = fontSize;
-  }
+    public String getButton() {
+        return button;
+    }
+
+    public void setButton(String button) {
+        this.button = button;
+    }
+
+    public String getBorder() {
+        return border;
+    }
+
+    public void setBorder(String border) {
+        this.border = border;
+    }
+
+    public String getFont() {
+        return font;
+    }
+
+    public void setFont(String font) {
+        this.font = font;
+    }
 }
