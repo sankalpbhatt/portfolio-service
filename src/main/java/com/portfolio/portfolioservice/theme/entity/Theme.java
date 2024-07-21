@@ -6,6 +6,7 @@ package com.portfolio.portfolioservice.theme.entity;
 
 import com.portfolio.portfolioservice.common.entity.BaseDeletableEntity;
 import com.portfolio.portfolioservice.template.enitity.Template;
+import com.portfolio.portfolioservice.theme.model.request.PropertySet;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,19 +35,19 @@ public class Theme extends BaseDeletableEntity {
     private Template template;
 
     @Column(columnDefinition = "jsonb")
-    private String text;
+    private PropertySet text;
 
     @Column(columnDefinition = "jsonb")
-    private String background;
+    private PropertySet background;
 
     @Column(columnDefinition = "jsonb")
-    private String button;
+    private PropertySet button;
 
     @Column(columnDefinition = "jsonb")
-    private String border;
+    private PropertySet border;
 
     @Column(columnDefinition = "jsonb")
-    private String font;
+    private PropertySet font;
 
     public UUID getId() {
         return id;
@@ -84,43 +85,43 @@ public class Theme extends BaseDeletableEntity {
         this.template = template;
     }
 
-    public String getText() {
+    public PropertySet getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(PropertySet text) {
         this.text = text;
     }
 
-    public String getBackground() {
+    public PropertySet getBackground() {
         return background;
     }
 
-    public void setBackground(String background) {
+    public void setBackground(PropertySet background) {
         this.background = background;
     }
 
-    public String getButton() {
+    public PropertySet getButton() {
         return button;
     }
 
-    public void setButton(String button) {
+    public void setButton(PropertySet button) {
         this.button = button;
     }
 
-    public String getBorder() {
+    public PropertySet getBorder() {
         return border;
     }
 
-    public void setBorder(String border) {
+    public void setBorder(PropertySet border) {
         this.border = border;
     }
 
-    public String getFont() {
+    public PropertySet getFont() {
         return font;
     }
 
-    public void setFont(String font) {
+    public void setFont(PropertySet font) {
         this.font = font;
     }
 }

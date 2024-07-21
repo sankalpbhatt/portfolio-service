@@ -31,7 +31,7 @@ public class Template extends BaseDeletableEntity {
     private String name;
     private String description;
     private String layout;
-    private String roleId;
+    private UUID roleId;
 
     private String imageUrl;
 
@@ -71,11 +71,11 @@ public class Template extends BaseDeletableEntity {
         this.layout = layout;
     }
 
-    public String getRoleId() {
+    public UUID getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(String roleId) {
+    public void setRoleId(UUID roleId) {
         this.roleId = roleId;
     }
 

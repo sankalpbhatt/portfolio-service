@@ -29,21 +29,41 @@ public class ThemeMapper {
 
     public Theme mapToEntity(CreateThemeRequest request) throws Exception {
         Theme theme = new Theme();
-        theme.setText(objectMapper.writeValueAsString(request.text()));
+        /*theme.setText(objectMapper.writeValueAsString(request.text()));
         theme.setName(request.name());
         theme.setBackground(objectMapper.writeValueAsString(request.background()));
         theme.setBorder(objectMapper.writeValueAsString(request.border()));
         theme.setButton(objectMapper.writeValueAsString(request.button()));
-        theme.setFont(objectMapper.writeValueAsString(request.font()));
+        theme.setFont(objectMapper.writeValueAsString(request.font()));*/
+        theme.setText(request.text());
+        theme.setName(request.name());
+        theme.setBackground(request.background());
+        theme.setBorder(request.border());
+        theme.setButton(request.button());
+        theme.setFont(request.font());
         theme.setDescription(request.description());
         theme.setSerialId(
-                SequenceService.SequenceType.ADDRESS.getPrefix()
+                SequenceService.SequenceType.THEME.getPrefix()
                         + sequenceService.getNextSequenceNumber(SequenceService.SequenceType.THEME));
         return theme;
     }
 
     public ThemeResponse mapToResponse(Theme theme) {
-        ThemeResponse themeResponse = new ThemeResponse();
+        ThemeResponse themeResponse;
+
+        themeResponse = new ThemeResponse(
+                theme.getSerialId(), theme.getName(), theme.getDescription(), theme.getTemplate().getSerialId(),
+                    /*objectMapper.readValue(theme.getText(), PropertySet.class),
+                    objectMapper.readValue(theme.getBackground(), PropertySet.class),
+                    objectMapper.readValue(theme.getButton(), PropertySet.class),
+                    objectMapper.readValue(theme.getBorder(), PropertySet.class),
+                    objectMapper.readValue(theme.getFont(), PropertySet.class)*/
+                theme.getText(),
+                theme.getBackground(),
+                theme.getButton(),
+                theme.getBorder(),
+                theme.getFont()
+        );
 
         return themeResponse;
     }
