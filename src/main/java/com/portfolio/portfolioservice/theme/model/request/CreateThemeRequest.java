@@ -6,6 +6,7 @@ package com.portfolio.portfolioservice.theme.model.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema
 public record CreateThemeRequest(
         @Schema(description = "Theme name") String name,
         @Schema(description = "Description of the theme") String description,

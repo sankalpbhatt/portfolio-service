@@ -12,6 +12,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 @ValidUserInfo
+@Schema
 public record CreateUserRequest(
         @NotNull String firstName,
         @NotNull String lastName,

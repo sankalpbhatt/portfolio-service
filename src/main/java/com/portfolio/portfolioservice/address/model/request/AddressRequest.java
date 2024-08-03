@@ -6,6 +6,7 @@ package com.portfolio.portfolioservice.address.model.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema
 public class AddressRequest {
 
     @Schema(example = "H No 1")
