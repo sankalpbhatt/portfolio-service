@@ -61,11 +61,13 @@ public class PortfolioController {
     }
 
     @PatchMapping
+    @Operation(summary = "Update Portfolio", description = "To be developed")
     public PortfolioPageResponse updatePortfolio() {
         return null;
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete Portfolio")
     public void deletePortfolio(@PathVariable("id") String id) {
         portfolioService.deletePortfolio(id);
     }

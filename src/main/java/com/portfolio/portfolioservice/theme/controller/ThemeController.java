@@ -9,6 +9,7 @@ import com.portfolio.portfolioservice.theme.model.request.ThemeSearchCriteria;
 import com.portfolio.portfolioservice.theme.model.response.ThemePageResponse;
 import com.portfolio.portfolioservice.theme.model.response.ThemeResponse;
 import com.portfolio.portfolioservice.theme.service.ThemeService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
@@ -33,16 +34,19 @@ public class ThemeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create Theme")
     public ThemeResponse createTheme(@RequestBody CreateThemeRequest request) throws Exception {
         return themeService.createTheme(request);
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get Theme by Id")
     public ThemeResponse getThemeById(@PathVariable(name = "id") String id) {
         return themeService.getThemeById(id);
     }
 
     @GetMapping
+    @Operation(summary = "Search Theme")
     public ThemePageResponse searchTheme(@ParameterObject ThemeSearchCriteria searchCriteria) {
         return themeService.searchTheme(searchCriteria);
     }

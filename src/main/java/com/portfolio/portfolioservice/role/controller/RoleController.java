@@ -50,6 +50,7 @@ public class RoleController {
     }
 
     @GetMapping
+    @Operation(summary = "Search Role")
     public RolePageResponse searchRole(@ParameterObject RoleSearchCriteria searchCriteria) {
         return roleService.searchCriteria(searchCriteria);
     }
