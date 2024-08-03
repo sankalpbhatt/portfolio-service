@@ -6,7 +6,7 @@ package com.portfolio.portfolioservice.exception;
 
 import com.portfolio.portfolioservice.exception.model.ErrorCode;
 
-public class PortfolioException extends Exception {
+public class PortfolioException extends RuntimeException {
 
   private final ErrorCode errorCode;
 

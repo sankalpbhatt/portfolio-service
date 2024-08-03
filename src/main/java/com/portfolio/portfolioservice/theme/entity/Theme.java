@@ -4,10 +4,13 @@
 
 package com.portfolio.portfolioservice.theme.entity;
 
+import java.util.UUID;
+
+import org.hibernate.annotations.ColumnTransformer;
+
 import com.portfolio.portfolioservice.common.entity.BaseDeletableEntity;
 import com.portfolio.portfolioservice.template.enitity.Template;
-import com.portfolio.portfolioservice.theme.model.request.PropertySet;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,112 +19,110 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "theme", schema = "portfolio")
 public class Theme extends BaseDeletableEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    private String serialId;
-    private String name;
-    private String description;
+  private String serialId;
+  private String name;
+  private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "template_id", nullable = false)
-    private Template template;
+  @ManyToOne
+  @JoinColumn(name = "template_id", nullable = false)
+  private Template template;
 
-    @Column(columnDefinition = "jsonb")
-    private PropertySet text;
+  @ColumnTransformer(write = "?::jsonb")
+  private String text;
 
-    @Column(columnDefinition = "jsonb")
-    private PropertySet background;
+  @ColumnTransformer(write = "?::jsonb")
+  private String background;
 
-    @Column(columnDefinition = "jsonb")
-    private PropertySet button;
+  @ColumnTransformer(write = "?::jsonb")
+  private String button;
 
-    @Column(columnDefinition = "jsonb")
-    private PropertySet border;
+  @ColumnTransformer(write = "?::jsonb")
+  private String border;
 
-    @Column(columnDefinition = "jsonb")
-    private PropertySet font;
+  @ColumnTransformer(write = "?::jsonb")
+  private String font;
 
-    public UUID getId() {
-        return id;
-    }
+  public UUID getId() {
+    return id;
+  }
 
-    public String getSerialId() {
-        return serialId;
-    }
+  public String getSerialId() {
+    return serialId;
+  }
 
-    public void setSerialId(String serialId) {
-        this.serialId = serialId;
-    }
+  public void setSerialId(String serialId) {
+    this.serialId = serialId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public Template getTemplate() {
-        return template;
-    }
+  public Template getTemplate() {
+    return template;
+  }
 
-    public void setTemplate(Template template) {
-        this.template = template;
-    }
+  public void setTemplate(Template template) {
+    this.template = template;
+  }
 
-    public PropertySet getText() {
-        return text;
-    }
+  public String getText() {
+    return text;
+  }
 
-    public void setText(PropertySet text) {
-        this.text = text;
-    }
+  public void setText(String text) {
+    this.text = text;
+  }
 
-    public PropertySet getBackground() {
-        return background;
-    }
+  public String getBackground() {
+    return background;
+  }
 
-    public void setBackground(PropertySet background) {
-        this.background = background;
-    }
+  public void setBackground(String background) {
+    this.background = background;
+  }
 
-    public PropertySet getButton() {
-        return button;
-    }
+  public String getButton() {
+    return button;
+  }
 
-    public void setButton(PropertySet button) {
-        this.button = button;
-    }
+  public void setButton(String button) {
+    this.button = button;
+  }
 
-    public PropertySet getBorder() {
-        return border;
-    }
+  public String getBorder() {
+    return border;
+  }
 
-    public void setBorder(PropertySet border) {
-        this.border = border;
-    }
+  public void setBorder(String border) {
+    this.border = border;
+  }
 
-    public PropertySet getFont() {
-        return font;
-    }
+  public String getFont() {
+    return font;
+  }
 
-    public void setFont(PropertySet font) {
-        this.font = font;
-    }
+  public void setFont(String font) {
+    this.font = font;
+  }
 }
