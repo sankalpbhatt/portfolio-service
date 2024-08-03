@@ -39,18 +39,20 @@ CREATE TABLE portfolio.templates (
     FOREIGN KEY (role_id) REFERENCES portfolio.roles(id)
 );
 
-CREATE TABLE portfolio.portfolio (
+
+CREATE TABLE portfolio.user_info (
     id UUID PRIMARY KEY,
     serial_id VARCHAR(20) NOT NULL ,
-    description VARCHAR(255) NOT NULL,
-    template_id UUID,
-    user_info_id UUID NOT NULL,
-    bio VARCHAR(255),
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(13) NOT NULL,
+    email VARCHAR(225) NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT now(),
     updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
-    FOREIGN KEY (template_id) REFERENCES portfolio.templates(id)
+    deleted_at TIMESTAMP NOT NULL DEFAULT now()
 );
+
 
 CREATE TABLE portfolio.theme (
     id UUID PRIMARY KEY,
@@ -69,17 +71,17 @@ CREATE TABLE portfolio.theme (
     FOREIGN KEY (template_id) REFERENCES portfolio.templates(id)
 );
 
-CREATE TABLE portfolio.user_info (
+CREATE TABLE portfolio.portfolio (
     id UUID PRIMARY KEY,
     serial_id VARCHAR(20) NOT NULL ,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    phone VARCHAR(13) NOT NULL,
-    email VARCHAR(225) NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    theme_id UUID,
+    user_info_id UUID NOT NULL,
+    bio VARCHAR(255),
     created_at TIMESTAMP NOT NULL DEFAULT now(),
     updated_at TIMESTAMP NOT NULL DEFAULT now(),
-    deleted_at TIMESTAMP NOT NULL DEFAULT now()
+    deleted_at TIMESTAMP NOT NULL DEFAULT now(),
+    FOREIGN KEY (theme_id) REFERENCES portfolio.theme(id)
 );
 
 
