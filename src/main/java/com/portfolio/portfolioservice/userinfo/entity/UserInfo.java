@@ -35,7 +35,6 @@ public class UserInfo extends BaseDeletableEntity {
 
     @OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Address> addresses = new HashSet<>();
-    ;
 
     public UUID getId() {
         return id;
