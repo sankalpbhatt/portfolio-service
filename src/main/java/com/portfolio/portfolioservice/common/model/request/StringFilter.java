@@ -8,30 +8,31 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class StringFilter {
 
-    @Schema(example = "value")
-    private String value;
-    private Operation operation;
+  @Schema(example = "value")
+  private String value;
 
-    public String getValue() {
-        return value;
-    }
+  private Operation operation;
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+  public String getValue() {
+    return value;
+  }
 
-    public Operation getOperation() {
-        return operation;
-    }
+  public void setValue(String value) {
+    this.value = value;
+  }
 
-    public void setOperation(Operation operation) {
-        this.operation = operation;
-    }
+  public Operation getOperation() {
+    return operation;
+  }
 
-    public enum Operation {
-        CONTAINS,
-        EQUALS,
-        STARTS_WITH,
-        ENDS_WITH
-    }
+  public void setOperation(Operation operation) {
+    this.operation = operation;
+  }
+
+  public enum Operation {
+    CONTAINS,
+    EQUALS,
+    STARTS_WITH,
+    ENDS_WITH
+  }
 }
